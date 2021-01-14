@@ -23,13 +23,13 @@
                                         </span>
                                     </button>
                                     <div class="dropdown-menu">
-                                        <a href="#" class="dropdown-item">
+                                        <a href="{{route('set_language', ['lang' => 'en'])}}" class="dropdown-item">
                                             <img src="assets\images\language\english.png" alt="Flag">
-                                            <span>English</span>
+                                            <span>{{__('English')}}</span>
                                         </a>
-                                        <a href="#" class="dropdown-item">
+                                        <a href="{{route('set_language', ['lang' => 'es'])}}" class="dropdown-item">
                                             <img src="assets\images\language\arab.png" alt="Flag">
-                                            <span>العربيّة</span>
+                                            <span>{{__('Spanish')}}</span>
                                         </a>
                                         <a href="#" class="dropdown-item">
                                             <img src="assets\images\language\germany.png" alt="Flag">
@@ -51,13 +51,13 @@
                             <li>
                                 <a href="log-in-register.html">
                                     <i class="bx bxs-lock"></i>
-                                    Log In
+                                    {{__('Log In')}}
                                 </a>
                             </li>
                             <li>
                                 <a href="log-in-register.html">
                                     <i class="bx bxs-user"></i>
-                                    Register
+                                    {{__('Register')}}
                                 </a>
                             </li>
                         </ul>
@@ -73,7 +73,7 @@
             <div class="container">
                 <div class="mobile-menu">
                     <div class="logo">
-                        <a href="index.html">
+                        <a href="{{route('home.index')}}">
                             <img src="assets\images\logo.png" alt="logo">
                         </a>
                     </div>
@@ -83,7 +83,7 @@
         <div class="desktop-nav">
             <div class="container">
                 <nav class="navbar navbar-expand-md navbar-light">
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="{{route('home.index')}}">
                         <img src="assets\images\logo.png" alt="logo">
                     </a>
                     <div class="collapse navbar-collapse mean-menu">

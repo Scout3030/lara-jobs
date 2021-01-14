@@ -46,6 +46,15 @@ use Laravel\Sanctum\HasApiTokens;
  * @method static \Illuminate\Database\Eloquent\Builder|User whereTwoFactorSecret($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property int $role_id
+ * @property string|null $phone_number
+ * @property string|null $address
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereAddress($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User wherePhoneNumber($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereRoleId($value)
+ * @property-read \App\Models\Candidate $candidate
+ * @property-read \App\Models\Company $company
+ * @property-read \App\Models\Role|null $role
  */
 class User extends Authenticatable
 {
@@ -95,4 +104,20 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function role(){
+        return $this->hasOne(Role::class);
+    }
+
+    public function candidate(){
+        return $this->belongsTo(Candidate::class);
+    }
+
+    public function company(){
+        return $this->belongsTo(Company::class);
+    }
+
+    public function pathAttachment () {
+        return "/images/users/" . $this->profile_photo_url;
+    }
 }

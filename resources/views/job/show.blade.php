@@ -21,7 +21,7 @@
                             Home
                         </a>
                     </li>
-                    <li class="active">Job Details</li>
+                    <li class="active">{{__('Job Details')}}</li>
                 </ul>
             </div>
         </div>
@@ -36,13 +36,13 @@
                         <div class="row align-items-center">
                             <div class="col-lg-2">
                                 <div class="hot-jobs-img">
-                                    <img src="assets\images\hot-jobs\hot-jobs-1.png" alt="Image">
+                                    <img src="{{$jobPost->company->user->pathAttachment()}}" alt="{{$jobPost->company->title}}">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="hot-jobs-content">
-                                    <h3>Finance & Accounts</h3>
-                                    <span class="sub-title">Finix loans & funding agency</span>
+                                    <h3>{{$jobPost->title}}</h3>
+                                    <span class="sub-title">{{$jobPost->company->title}}</span>
                                     <ul>
                                         <li><span>Vacancy:</span> 01</li>
                                     </ul>
@@ -57,7 +57,7 @@
                         </div>
                     </div>
                     <div class="job-details-content">
-                        <h3>Job Description</h3>
+                        <h3>{{__('Job Description')}}</h3>
                         <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Lorem ipsum dolor sit amet, consetetur</p>
                         <h4>Responsibilities:</h4>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. A nisi aspernatur modi doloribus dolorem quidem! Neque placeat numquam vel magni ipsam, similique eligendi sunt laudantium, nihil alias soluta eos in Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et nam eveniet quasi.</p>
@@ -93,104 +93,12 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="job-details-sidebar">
-                        <div class="job-widget">
-                            <h3>Share This Job</h3>
-                            <ul class="social-icon">
-                                <li>
-                                    <a href="#">
-                                        <i class="bx bxl-facebook"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="bx bxl-instagram"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="bx bxl-linkedin-square"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="bx bxl-twitter"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="job-widget">
-                            <h3>Job Overview</h3>
-                            <ul class="overview">
-                                <li>
-                                    Published On
-                                    <span>: Oct 01, 2020</span>
-                                </li>
-                                <li>
-                                    Vacancy
-                                    <span>: 01</span>
-                                </li>
-                                <li>
-                                    Job Type
-                                    <span>: Part Time</span>
-                                </li>
-                                <li>
-                                    Experience
-                                    <span>: 3 Year(s)</span>
-                                </li>
-                                <li>
-                                    Job Location
-                                    <span>: Alaska(s)</span>
-                                </li>
-                                <li>
-                                    Category
-                                    <span>: Finance</span>
-                                </li>
-                                <li>
-                                    Gender
-                                    <span>: Both</span>
-                                </li>
-                                <li>
-                                    Salary
-                                    <span>: $700.00</span>
-                                </li>
-                                <li>
-                                    Application Deu
-                                    <span>: 10.11.2020</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                @include('job.partials.right-sidebar')
             </div>
         </div>
     </section>
 
-
-    <section class="subscribe-area subscribe-area-about-page">
-        <div class="container">
-            <div class="subscribe-bg">
-                <div class="row align-items-center">
-                    <div class="col-lg-6">
-                        <div class="subscribe-content">
-                            <h2>Find Your Next Great Job Opportunity!</h2>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <form class="newsletter-form" data-toggle="validator">
-                            <input type="email" class="form-control" placeholder="Enter email address" name="EMAIL" required="" autocomplete="off">
-                            <button class="default-btn" type="submit">
-                                <span>Subscribe</span>
-                            </button>
-                            <div id="validator-newsletter" class="form-result"></div>
-                            <p>Join The Newsletter 10,000 Users Already!</p>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    @include('partials.newsletter')
 
 @endsection
 

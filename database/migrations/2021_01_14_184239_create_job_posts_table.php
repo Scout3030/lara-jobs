@@ -19,6 +19,7 @@ class CreateJobPostsTable extends Migration
             $table->foreign('company_id')->references('id')->on('companies');
             $table->string('title');
             $table->string('description');
+            $table->string('slug')->unique();
             $table->timestamps();
         });
     }

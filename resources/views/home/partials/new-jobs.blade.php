@@ -4,7 +4,7 @@
             <div class="col-lg-8">
                 <div class="section-title">
                     <span>Hot Jobs</span>
-                    <h2>New & Random Jobs</h2>
+                    <h2>{{__('New & Random Jobs')}}</h2>
                 </div>
                 <div class="row">
                     <div class="col-lg-6">
@@ -29,33 +29,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="hot-jobs-list">
-                    <div class="row align-items-center">
-                        <div class="col-lg-2">
-                            <a href="job-details.html" class="hot-jobs-img">
-                                <img src="assets\images\hot-jobs\hot-jobs-1.png" alt="Image">
-                            </a>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="hot-jobs-content">
-                                <h3><a href="job-details.html">Finance & Accounts</a></h3>
-                                <span class="sub-title">Finix loans & funding agency</span>
-                                <ul>
-                                    <li><span>Education:</span> BBA / M.A.</li>
-                                    <li><span>Experience: </span>At Least 1 Year(s)</li>
-                                    <li><span>Location: </span>New York</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="hot-jobs-btn">
-                                <a href="job-details.html" class="default-btn">Browse Job</a>
-                                <p><span>Deadline: </span>Dec 30, 2020</p>
-                            </div>
-                        </div>
-                    </div>
-                    <span class="featured">Featured</span>
-                </div>
+                @forelse($jobPosts as $jobPost)
+                    @include('job.partials.post-card', ['jobPost' => $jobPost])
+                @empty
+
+                @endforelse
                 <div class="hot-jobs-list">
                     <div class="row align-items-center">
                         <div class="col-lg-2">
@@ -164,18 +142,9 @@
                     </div>
                     <span class="featured">Featured</span>
                 </div>
-                <div class="row">
-                    <div class="col-lg-12 col-md-12">
-                        <div class="pagination-area">
-                            <span class="page-numbers current" aria-current="page">1</span>
-                            <a href="#" class="page-numbers">2</a>
-                            <a href="#" class="page-numbers">3</a>
-                            <a href="#" class="next page-numbers">
-                                <i class="flaticon-right-arrow"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+
+                {{$jobPosts->links()}}
+
             </div>
             <div class="col-lg-4">
                 <div class="hot-jobs-sidebar">

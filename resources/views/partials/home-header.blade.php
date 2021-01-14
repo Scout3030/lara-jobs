@@ -17,19 +17,19 @@
                             <li>
                                 <div class="dropdown language-btn">
                                     <button class="dropdown-toggle" type="button" data-toggle="dropdown">
-<span>
-Language
-<i class="bx bx-chevron-down"></i>
-</span>
+                                        <span>
+                                        {{__('Language')}}
+                                            <i class="bx bx-chevron-down"></i>
+                                        </span>
                                     </button>
                                     <div class="dropdown-menu">
-                                        <a href="#" class="dropdown-item">
+                                        <a href="{{route('setLanguage', ['lang' => 'en'])}}" class="dropdown-item">
                                             <img src="assets\images\language\english.png" alt="Flag">
-                                            <span>English</span>
+                                            <span>{{__('English')}}</span>
                                         </a>
-                                        <a href="#" class="dropdown-item">
+                                        <a href="{{route('setLanguage', ['lang' => 'es'])}}" class="dropdown-item">
                                             <img src="assets\images\language\arab.png" alt="Flag">
-                                            <span>العربيّة</span>
+                                            <span>{{__('Spanish')}}</span>
                                         </a>
                                         <a href="#" class="dropdown-item">
                                             <img src="assets\images\language\germany.png" alt="Flag">
@@ -73,7 +73,7 @@ Language
             <div class="container">
                 <div class="mobile-menu">
                     <div class="logo">
-                        <a href="index.html">
+                        <a href="{{route('home.index')}}">
                             <img src="assets\images\logo.png" alt="logo">
                         </a>
                     </div>
@@ -83,7 +83,7 @@ Language
         <div class="desktop-nav">
             <div class="container">
                 <nav class="navbar navbar-expand-md navbar-light">
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="{{route('home.index')}}">
                         <img src="assets\images\logo.png" alt="logo">
                     </a>
                     <div class="collapse navbar-collapse mean-menu">
