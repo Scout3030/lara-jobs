@@ -14,8 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home');
-});
+    return view('home.index');
+})->name('home.index');
+
+Route::view('/job/listing', 'job.index');
+
+Route::view('/job/detail', 'job.show');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

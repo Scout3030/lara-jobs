@@ -36,18 +36,23 @@
     <body>
 
         <!-- Page Heading -->
-        @include('partials.header')
+        @if(Route::currentRouteName() == 'home')
+            @include('partials.home-header')
+        @else
+            @include('partials.header')
+        @endif
 
         <!-- Page Content -->
-        <main>
-            {{ $slot }}
-        </main>
+        @yield('content')
 
 
         @stack('modals')
 
+        @include('partials.footer')
+
         @livewireScripts
 
+        <script src="{{asset('assets/js/jquery.min.js')}}"></script>
         <script src="{{asset('assets/js/popper.min.js')}}"></script>
         <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
         <script src="{{asset('assets/js/meanmenu.min.js')}}"></script>

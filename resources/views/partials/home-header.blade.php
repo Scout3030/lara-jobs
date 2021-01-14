@@ -1,6 +1,6 @@
-<header class="header-area">
+<header class="header-area header-area-three">
 
-    <div class="top-header">
+    <div class="top-header top-header-three">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 col-md-6">
@@ -17,10 +17,10 @@
                             <li>
                                 <div class="dropdown language-btn">
                                     <button class="dropdown-toggle" type="button" data-toggle="dropdown">
-                                        <span>
-                                            Language
-                                            <i class="bx bx-chevron-down"></i>
-                                        </span>
+<span>
+Language
+<i class="bx bx-chevron-down"></i>
+</span>
                                     </button>
                                     <div class="dropdown-menu">
                                         <a href="#" class="dropdown-item">
@@ -68,7 +68,7 @@
     </div>
 
 
-    <div class="navbar-area">
+    <div class="navbar-area navbar-area-three">
         <div class="mobile-nav">
             <div class="container">
                 <div class="mobile-menu">
@@ -89,7 +89,7 @@
                     <div class="collapse navbar-collapse mean-menu">
                         <ul class="navbar-nav m-auto">
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="#" class="nav-link active">
                                     Home
                                     <i class="bx bx-chevron-down"></i>
                                 </a>
@@ -101,18 +101,18 @@
                                         <a href="index-2.html" class="nav-link">Home Two</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="index-3.html" class="nav-link">Home Three</a>
+                                        <a href="index-3.html" class="nav-link active">Home Three</a>
                                     </li>
                                 </ul>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link active">
+                                <a href="#" class="nav-link">
                                     Jobs
                                     <i class="bx bx-chevron-down"></i>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li class="nav-item">
-                                        <a href="job-listing.html" class="nav-link active">Job Listing</a>
+                                        <a href="job-listing.html" class="nav-link">Job Listing</a>
                                     </li>
                                     <li class="nav-item">
                                         <a href="post-job.html" class="nav-link">Post A Job</a>
