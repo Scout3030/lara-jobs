@@ -15,7 +15,11 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('role_id')->default(\App\Models\Role::CANDIDATE);
+            $table->foreign('role_id')->references('id')->on('roles');
             $table->string('name');
+            $table->string('phone_number')->nullable();
+            $table->string('address')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
