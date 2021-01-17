@@ -35,10 +35,27 @@ use Illuminate\Support\Str;
  * @property string|null $deleted_at
  * @method static \Illuminate\Database\Eloquent\Builder|JobPost whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|JobPost whereJobTypeId($value)
+ * @property \datetime|null $deadline
+ * @property string $tag
+ * @property-read mixed $custom_tag
+ * @method static \Illuminate\Database\Eloquent\Builder|JobPost whereDeadline($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|JobPost whereTag($value)
+ * @property int $province_id
+ * @property-read \App\Models\JobType $jobType
+ * @property-read \App\Models\Province $province
+ * @method static \Illuminate\Database\Eloquent\Builder|JobPost whereProvinceId($value)
+ * @property int $currency_id
+ * @property string|null $salary
+ * @method static \Illuminate\Database\Eloquent\Builder|JobPost whereCurrencyId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|JobPost whereSalary($value)
  */
 class JobPost extends Model
 {
     use HasFactory;
+
+    const FEATURED = 1;
+    const URGENT = 2;
+    const IMMEDIATE = 3;
 
     /**
      * @var string[]
@@ -46,8 +63,20 @@ class JobPost extends Model
     protected $fillable = [
         'title',
         'job_type_id',
+        'province_id',
         'description',
+        'deadline',
+        'tag'
     ];
+
+    protected $appends = [
+        'custom_tag',
+    ];
+
+    protected $casts = [
+        'deadline' => 'datetime:Y-m-d',
+    ];
+
 
     public static function boot () {
         parent::boot();
@@ -70,5 +99,22 @@ class JobPost extends Model
 
     public function candidates(){
         return $this->hasMany(Candidate::class);
+    }
+
+    public function jobType(){
+        return $this->belongsTo(JobType::class);
+    }
+
+    public function getCustomTagAttribute(){
+        $tags = [
+            self::FEATURED => ['class' => 'featured', 'text' => __('Featured')],
+            self::URGENT => ['class' => 'featured red', 'text' => __('Urgent')],
+            self::IMMEDIATE => ['class' => 'featured', 'text' => __('Immediate hiring')]
+        ];
+        return $tags[$this->tag];
+    }
+
+    public function province(){
+        return $this->belongsTo(Province::class);
     }
 }

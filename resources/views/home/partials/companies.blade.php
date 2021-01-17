@@ -10,7 +10,7 @@
                     @forelse($topCompanies as $topCompany)
                     <div class="partner-item">
                         <a href="#">
-                            <img src="{{$topCompany->user->pathAttachment()}}" alt="{{$topCompany->title}}">
+                            <img src="{{$topCompany->user->profile_photo_url}}" alt="{{$topCompany->title}}">
                         </a>
                     </div>
                     @empty

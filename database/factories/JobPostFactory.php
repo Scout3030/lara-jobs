@@ -28,7 +28,10 @@ class JobPostFactory extends Factory
             'description' => $this->faker->sentence,
             'company_id' => null,
             'job_type_id' => \App\Models\JobType::get()->random()->id,
-            'slug' => Str::slug($title, '-')
+            'province_id' => \App\Models\Province::get()->random()->id,
+            'slug' => Str::slug($title, '-'),
+            'deadline' => $this->faker->dateTimeBetween('now', '+2 months', 'America/Lima'),
+            'tag' => $this->faker->randomElement([\App\Models\JobPost::FEATURED, \App\Models\JobPost::URGENT])
         ];
     }
 }

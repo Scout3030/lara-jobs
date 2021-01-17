@@ -29,12 +29,22 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \App\Models\User $user
  * @property string|null $deleted_at
  * @method static \Illuminate\Database\Eloquent\Builder|Company whereDeletedAt($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\JobPost[] $jobPosts
+ * @property-read int|null $job_posts_count
  */
 class Company extends Model
 {
     use HasFactory;
 
+    public function getRouteKeyName(){
+        return 'slug';
+    }
+
     public function user(){
         return $this->belongsTo(User::class);
+    }
+
+    public function jobPosts(){
+        return $this->hasMany(JobPost::class);
     }
 }

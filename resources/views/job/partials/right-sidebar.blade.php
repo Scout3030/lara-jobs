@@ -1,7 +1,7 @@
 <div class="col-lg-4">
     <div class="job-details-sidebar">
         <div class="job-widget">
-            <h3>Share This Job</h3>
+            <h3>{{__('Share This Job')}}</h3>
             <ul class="social-icon">
                 <li>
                     <a href="#">
@@ -29,40 +29,35 @@
             <h3>Job Overview</h3>
             <ul class="overview">
                 <li>
-                    Published On
-                    <span>: Oct 01, 2020</span>
+                    {{__('Published On')}}
+                    <span>: {{$jobPost->created_at->format('d-m-Y')}}</span>
                 </li>
                 <li>
-                    Vacancy
+                    {{__('Vacancy')}}
                     <span>: 01</span>
                 </li>
                 <li>
-                    Job Type
-                    <span>: Part Time</span>
+                    {{__('Job Type')}}
+                    <span>: {{ $jobPost->jobType->name }}</span>
                 </li>
                 <li>
-                    Experience
+                    {{__('Experience')}}
                     <span>: 3 Year(s)</span>
                 </li>
                 <li>
-                    Job Location
-                    <span>: Alaska(s)</span>
+                    {{__('Job Location')}}
+                    <span>: {{ $jobPost->province->name }},
+                        {{ $jobPost->province->department->name }},
+                        {{ $jobPost->province->department->country->name }}
+                    </span>
                 </li>
                 <li>
-                    Category
-                    <span>: Finance</span>
-                </li>
-                <li>
-                    Gender
-                    <span>: Both</span>
-                </li>
-                <li>
-                    Salary
+                    {{__('Salary')}}
                     <span>: $700.00</span>
                 </li>
                 <li>
-                    Application Deu
-                    <span>: 10.11.2020</span>
+                    {{__('Application Deu')}}
+                    <span>: {{ $jobPost->deadline->format('d.m.Y') }}</span>
                 </li>
             </ul>
         </div>

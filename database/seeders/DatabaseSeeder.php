@@ -28,11 +28,14 @@ class DatabaseSeeder extends Seeder
         Storage::makeDirectory('users');
 
         $this->call([
+            CurrencySeeder::class,
+            CountrySeeder::class,
+            DepartmentSeeder::class,
+            ProvinceSeeder::class,
             JobTypeSeeder::class,
             RoleSeeder::class,
-            UserSeeder::class
+            UserSeeder::class,
+            JobPostSeeder::class
         ]);
-
-
     }
 }

@@ -4,7 +4,14 @@
 
     @include('home.partials.banner')
 
-    @livewire('list-job-post')
+    <section class="hot-jobs-area hot-jobs-area-three pb-100">
+        <div class="container">
+            <div class="row">
+                @livewire('list-job-post')
+                @livewire('hiring-immediately')
+            </div>
+        </div>
+    </section>
 
     @include('home.partials.companies')
 

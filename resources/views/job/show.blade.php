@@ -36,7 +36,7 @@
                         <div class="row align-items-center">
                             <div class="col-lg-2">
                                 <div class="hot-jobs-img">
-                                    <img src="{{$jobPost->company->user->pathAttachment()}}" alt="{{$jobPost->company->title}}">
+                                    <img src="{{$jobPost->company->user->profile_photo_url}}" alt="{{$jobPost->company->title}}">
                                 </div>
                             </div>
                             <div class="col-lg-6">
@@ -44,14 +44,14 @@
                                     <h3>{{$jobPost->title}}</h3>
                                     <span class="sub-title">{{$jobPost->company->title}}</span>
                                     <ul>
-                                        <li><span>Vacancy:</span> 01</li>
+                                        <li><span>{{__('Vacancy')}}:</span> 01</li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="col-lg-4">
                                 <div class="hot-jobs-btn">
-                                    <a href="#" class="default-btn">Apply Now</a>
-                                    <p><span>Deadline: </span>Dec 30, 2020</p>
+                                    <a href="#" class="default-btn">{{__('Apply Now')}}</a>
+                                    <p><span>{{__('Deadline')}}: </span>{{$jobPost->deadline->format('d-m-Y')}}</p>
                                 </div>
                             </div>
                         </div>

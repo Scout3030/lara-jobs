@@ -18,12 +18,12 @@
             <div class="collapse navbar-collapse mean-menu">
                 <ul class="navbar-nav m-auto">
                     <li class="nav-item">
-                        <a href="#" class="nav-link active">
+                        <a href="{{ route('job.index') }}" class="nav-link active">
                             {{__('Jobs')}}
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="{{ route('company.index') }}" class="nav-link">
                             {{__('Employers')}}
                         </a>
                     </li>

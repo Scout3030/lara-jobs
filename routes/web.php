@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JobPostController;
@@ -30,10 +31,12 @@ Route::get('/', [HomeController::class, 'index'])
     ->name('home.index');
 
 Route::group(['prefix' => 'job'], function () {
+
+    Route::view('/listing', 'job.index')
+        ->name('job.index');
+
     Route::get('/show/{jobPost:slug}', [JobPostController::class, 'show'])
         ->name('job.show');
-
-    Route::view('/listing', 'job.index');
 
     Route::view('/detail', 'job.show');
 
@@ -43,6 +46,24 @@ Route::group(['prefix' => 'job'], function () {
     Route::post('/create', [JobPostController::class, 'store'])
         ->name('job.store');
 });
+
+Route::group(['prefix' => 'company'], function () {
+
+    Route::view('/listing', 'company.index')
+        ->name('company.index');
+
+    Route::get('/show/{companyPost:slug}', [CompanyController::class, 'show'])
+        ->name('company.show');
+
+    Route::view('/detail', 'company.show');
+
+    Route::view('/post-a-company', 'company.create')
+        ->name('company.create');
+
+    Route::post('/create', [JobPostController::class, 'store'])
+        ->name('company.store');
+});
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
