@@ -31,17 +31,31 @@ use Illuminate\Support\Str;
  * @property-read int|null $candidates_count
  * @property-read \App\Models\Company $company
  * @method static \Illuminate\Database\Eloquent\Builder|JobPost whereSlug($value)
+ * @property int $job_type_id
+ * @property string|null $deleted_at
+ * @method static \Illuminate\Database\Eloquent\Builder|JobPost whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|JobPost whereJobTypeId($value)
  */
 class JobPost extends Model
 {
     use HasFactory;
+
+    /**
+     * @var string[]
+     */
+    protected $fillable = [
+        'title',
+        'job_type_id',
+        'description',
+    ];
 
     public static function boot () {
         parent::boot();
 
         static::saving(function(JobPost $jobPost) {
             if( ! \App::runningInConsole() ) {
-                $jobPost->slug = Str::slug($jobPost->title, "-")."-".strtotime(Carbon::now());;
+                $jobPost->slug = Str::slug($jobPost->title, "-")."-".strtotime(Carbon::now());
+                $jobPost->company_id = auth()->user()->company->id;
             }
         });
     }

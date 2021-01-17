@@ -11,4 +11,13 @@ class JobPostController extends Controller
         $jobPost->load(['company.user']);
         return view('job.show', compact('jobPost'));
     }
+
+    public function store(Request $request){
+        JobPost::create([
+            'title' => $request->title,
+            'job_type_id' => $request->job_type_id,
+            'description' => $request->description
+        ]);
+        return view('job.create');
+    }
 }

@@ -20,6 +20,7 @@ class CreateCandidateJobPostTable extends Migration
             $table->unsignedBigInteger('job_id');
             $table->foreign('job_id')->references('id')->on('job_posts');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

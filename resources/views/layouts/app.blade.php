@@ -36,8 +36,8 @@
     <body>
 
         <!-- Page Heading -->
-        @if(Route::currentRouteName() == 'home')
-            @include('partials.home-header')
+        @if(Route::currentRouteName() == 'home.index')
+            @include('partials.header-home')
         @else
             @include('partials.header')
         @endif

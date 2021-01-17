@@ -28,9 +28,9 @@ class DatabaseSeeder extends Seeder
         Storage::makeDirectory('users');
 
         $this->call([
+            JobTypeSeeder::class,
             RoleSeeder::class,
-            UserSeeder::class,
-//            JobPostSeeder::class
+            UserSeeder::class
         ]);
 
 

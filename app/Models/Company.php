@@ -27,6 +27,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Company whereWebsiteUrl($value)
  * @mixin \Eloquent
  * @property-read \App\Models\User $user
+ * @property string|null $deleted_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereDeletedAt($value)
  */
 class Company extends Model
 {

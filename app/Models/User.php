@@ -110,11 +110,11 @@ class User extends Authenticatable
     }
 
     public function candidate(){
-        return $this->belongsTo(Candidate::class);
+        return $this->hasOne(Candidate::class);
     }
 
     public function company(){
-        return $this->belongsTo(Company::class);
+        return $this->hasOne(Company::class);
     }
 
     public function pathAttachment () {

@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\JobPost;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Str;
 
 class JobPostFactory extends Factory
 {
@@ -21,10 +22,13 @@ class JobPostFactory extends Factory
      */
     public function definition()
     {
+        $title = $this->faker->sentence;
         return [
-            'title' => $this->faker->sentence,
+            'title' => $title,
             'description' => $this->faker->sentence,
             'company_id' => null,
+            'job_type_id' => \App\Models\JobType::get()->random()->id,
+            'slug' => Str::slug($title, '-')
         ];
     }
 }

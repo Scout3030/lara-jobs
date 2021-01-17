@@ -1,3 +1,5 @@
+@livewire('list-job-post')
+
 <section class="hot-jobs-area hot-jobs-area-three pb-100">
     <div class="container">
         <div class="row">

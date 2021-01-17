@@ -4,11 +4,7 @@
 
     @include('home.partials.banner')
 
-    @include('home.partials.how-works')
-
-    @include('home.partials.categories')
-
-    @include('home.partials.new-jobs')
+    @livewire('list-job-post')
 
     @include('home.partials.companies')
 

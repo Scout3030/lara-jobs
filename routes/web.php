@@ -36,6 +36,12 @@ Route::group(['prefix' => 'job'], function () {
     Route::view('/listing', 'job.index');
 
     Route::view('/detail', 'job.show');
+
+    Route::view('/post-a-job', 'job.create')
+        ->name('job.create');
+
+    Route::post('/create', [JobPostController::class, 'store'])
+        ->name('job.store');
 });
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
