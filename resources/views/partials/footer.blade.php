@@ -4,52 +4,41 @@
         <div class="row">
             <div class="col-lg-3 col-md-6">
                 <div class="single-footer-widget single-bg">
-                    <a href="index.html" class="logo">
-                        <img src="assets\images\logo.png" alt="Image">
+                    <a href="{{ route('home.index') }}" class="logo">
+                        <img src="{{asset('assets/images/logo.png')}}" alt="Image">
                     </a>
-                    <p>Lorem ipsum dolor sit amet, consec tetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua consec tetur.</p>
+                    <p>{{\App\Models\GeneralData::get()->first()->footer_text}}</p>
                     <ul class="social-icon">
+                        @foreach(\App\Models\GeneralData::get()->first()->social_network as $socialNetwork)
                         <li>
-                            <a href="#">
-                                <i class="bx bxl-facebook"></i>
+                            <a href="{{$socialNetwork['link']}}">
+                                <i class="bx bxl-{{$socialNetwork['icon']}}"></i>
                             </a>
                         </li>
-                        <li>
-                            <a href="#">
-                                <i class="bx bxl-instagram"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="bx bxl-linkedin-square"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="bx bxl-twitter"></i>
-                            </a>
-                        </li>
+                        @endforeach
                     </ul>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">
                 <div class="single-footer-widget">
-                    <h3>Contact</h3>
+                    <h3>{{__('Contact')}}</h3>
                     <ul class="address">
                         <li>
                             <i class="bx bx-phone-call"></i>
-                            <span>Phone:</span>
-                            <a href="tel:+1-(514)-7939-357">+1 (514) 7939-357</a>
+                            <span>{{__('Phone')}}:</span>
+                            <a href="tel:+1-(514)-7939-357">{{\App\Models\GeneralData::get()->first()->phone_number}}</a>
                         </li>
                         <li>
                             <i class="bx bx-envelope"></i>
-                            <span>Email:</span>
-                            <a href="/cdn-cgi/l/email-protection#234b464f4f4c634956414a0d404c4e"><span class="__cf_email__" data-cfemail="a3cbc6cfcfcce3c9d6c1ca8dc0ccce">[email&#160;protected]</span></a>
+                            <span>{{__('Email')}}:</span>
+                            <a href="javascript:void(0)">
+                                <span class="__cf_email__">{{\App\Models\GeneralData::get()->first()->email}}</span>
+                            </a>
                         </li>
                         <li class="location">
                             <i class="bx bx-location-plus"></i>
-                            <span>Address:</span>
-                            6890 Blvd, The Bronx, NY 1058 New York, USA
+                            <span>{{__('Address')}}:</span>
+                            {{\App\Models\GeneralData::get()->first()->address}}
                         </li>
                     </ul>
                 </div>
@@ -111,8 +100,8 @@
 <div class="copy-right-area copy-right-area-three">
     <div class="container">
         <p>
-            © 2021 Jubi Is Proudly Created By
-            <a href="https://envytheme.com/" target="_blank">EnvyTheme</a>
+            © 2021 {{env('APP_NAME')}}
+            <a href="https://www.fiverr.com/share/1bwWLp" target="_blank">Roberth Rodriguez</a>
         </p>
     </div>
 </div>

@@ -20,4 +20,12 @@ class JobPostController extends Controller
         ]);
         return view('job.create');
     }
+
+    public function search(){
+//        $query = request()->search;
+//        $jobPost = JobPost::where('title', 'LIKE', '%'.$query.'%')
+//            ->orWhere('description', 'LIKE', '%'.$query.'%')
+//            ->paginate(10);
+//        return view('job.index', compact('jobPost'));
+    }
 }

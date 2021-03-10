@@ -14,13 +14,10 @@ class CreateCandidateJobPostTable extends Migration
     public function up()
     {
         Schema::create('candidate_job_post', function (Blueprint $table) {
-            $table->id();
             $table->unsignedBigInteger('candidate_id');
             $table->foreign('candidate_id')->references('id')->on('candidates');
-            $table->unsignedBigInteger('job_id');
-            $table->foreign('job_id')->references('id')->on('job_posts');
-            $table->timestamps();
-            $table->softDeletes();
+            $table->unsignedBigInteger('job_post_id');
+            $table->foreign('job_post_id')->references('id')->on('job_posts');
         });
     }
 

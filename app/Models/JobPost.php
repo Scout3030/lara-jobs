@@ -98,7 +98,7 @@ class JobPost extends Model
     }
 
     public function candidates(){
-        return $this->hasMany(Candidate::class);
+        return $this->belongsToMany(Candidate::class);
     }
 
     public function jobType(){

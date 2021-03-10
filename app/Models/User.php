@@ -106,7 +106,7 @@ class User extends Authenticatable
     ];
 
     public function role(){
-        return $this->hasOne(Role::class);
+        return $this->belongsTo(Role::class);
     }
 
     public function candidate(){
@@ -119,5 +119,9 @@ class User extends Authenticatable
 
     public function pathAttachment () {
         return "/images/users/" . $this->profile_photo_url;
+    }
+
+    public static function navigation () {
+        return auth()->check() ? auth()->user()->role->name : 'guest';
     }
 }

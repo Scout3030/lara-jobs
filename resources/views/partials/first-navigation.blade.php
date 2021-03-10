@@ -31,6 +31,7 @@
                     </div>
                 </li>
             </ul>
+            @guest
             <ul class="log-in">
                 <li>
                     <a href="{{ route('login') }}">
@@ -45,6 +46,7 @@
                     </a>
                 </li>
             </ul>
+            @endguest
         </div>
     </div>
 </div>

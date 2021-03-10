@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\CandidateController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JobPostController;
 use Illuminate\Support\Facades\Route;
@@ -31,7 +33,8 @@ Route::get('/', [HomeController::class, 'index'])
     ->name('home.index');
 
 Route::group(['prefix' => 'job'], function () {
-
+    Route::get('/search', [JobPostController::class, 'search'])
+        ->name('job.search');
     Route::view('/listing', 'job.index')
         ->name('job.index');
 
@@ -40,11 +43,7 @@ Route::group(['prefix' => 'job'], function () {
 
     Route::view('/detail', 'job.show');
 
-    Route::view('/post-a-job', 'job.create')
-        ->name('job.create');
 
-    Route::post('/create', [JobPostController::class, 'store'])
-        ->name('job.store');
 });
 
 Route::group(['prefix' => 'company'], function () {
@@ -67,3 +66,25 @@ Route::group(['prefix' => 'company'], function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+
+Route::group(["middleware" => ['auth', sprintf("role:%s", \App\Models\Role::ADMIN)]], function() {
+
+    Route::view('/post-a-job', 'job.create')
+        ->middleware(['auth'])
+        ->name('job.create');
+
+    Route::post('/create', [JobPostController::class, 'store'])
+        ->middleware(['auth'])
+        ->name('job.store');
+});
+
+Route::group(["middleware" => ['auth', sprintf("role:%s", \App\Models\Role::CANDIDATE)]], function() {
+
+    Route::view('/dashboard', 'dashboard.index')
+        ->name('dashboard.index');
+
+    Route::get('/applied-jobs', [CandidateController::class, 'applied'])
+        ->name('candidate.applied');
+
+});

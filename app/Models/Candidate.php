@@ -47,6 +47,6 @@ class Candidate extends Model
     }
 
     public function jobPosts(){
-        return $this->hasMany(JobPost::class);
+        return $this->belongsToMany(JobPost::class);
     }
 }

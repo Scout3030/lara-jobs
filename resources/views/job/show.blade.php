@@ -48,12 +48,24 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="col-lg-4">
-                                <div class="hot-jobs-btn">
-                                    <a href="#" class="default-btn">{{__('Apply Now')}}</a>
-                                    <p><span>{{__('Deadline')}}: </span>{{$jobPost->deadline->format('d-m-Y')}}</p>
+                            @can('apply', $jobPost)
+                                <div class="col-lg-4">
+                                    <div class="hot-jobs-btn">
+                                        <a href="#" class="default-btn">{{__('Apply Now')}}</a>
+                                        <p><span>{{__('Deadline')}}: </span>{{$jobPost->deadline->format('d-m-Y')}}</p>
+                                    </div>
                                 </div>
-                            </div>
+                            @endcan
+
+                            @cannot('apply', $jobPost)
+                                <div class="col-lg-4">
+                                    <div class="hot-jobs-btn">
+                                        <a href="#" class="default-btn">{{__('Applied')}}</a>
+                                        <p><span>{{__('Deadline')}}: </span>{{$jobPost->deadline->format('d-m-Y')}}</p>
+                                    </div>
+                                </div>
+                            @endcan
+
                         </div>
                     </div>
                     <div class="job-details-content">
