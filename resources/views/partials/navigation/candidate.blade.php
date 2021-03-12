@@ -10,7 +10,7 @@
         </a>
     </li>
     <li class="nav-item">
-        <a href="{{ route('dashboard.index') }}" class="nav-link">
+        <a href="{{ route('candidate.dashboard') }}" class="nav-link">
             {{__('Dashboard')}}
         </a>
     </li>

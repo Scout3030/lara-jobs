@@ -14,11 +14,13 @@ class JobPostController extends Controller
 
     public function store(Request $request){
         JobPost::create([
-            'title' => $request->title,
             'job_type_id' => $request->job_type_id,
-            'description' => $request->description
+            'province_id' => 123,
+            'currency_id' => 3,
+            'title' => $request->title,
+            'description' => $request->description,
         ]);
-        return view('job.create');
+        return back()->with('message', ['status' => 'success', 'message' => __('Oferta creada correctamente')]);
     }
 
     public function search(){

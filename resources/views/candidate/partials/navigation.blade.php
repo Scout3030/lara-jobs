@@ -10,10 +10,10 @@
         </div>
         <ul>
             <li>
-                <a href="dashboard.html" class="active">Dashboard</a>
+                <a href="{{ route('candidate.dashboard') }}" class="active">Dashboard</a>
             </li>
             <li>
-                <a href="profile.html">Profile</a>
+                <a href="{{ route('candidate.profile') }}">Profile</a>
             </li>
             <li>
                 <a href="resume.html">Resume</a>

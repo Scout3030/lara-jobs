@@ -18,7 +18,10 @@ class ListJobPost extends Component
 
     protected $listeners = ['searchingPosts' => 'filteredJobPosts'];
 
-    public function filteredJobPosts(){
+    public function filteredJobPosts($filters = null){
+        if($filters){
+            dd(array_keys($filters));
+        }
         $this->jobPosts = JobPost::with(['company'])
             ->paginate($this->perPage);
         $this->fired = true;
@@ -30,6 +33,7 @@ class ListJobPost extends Component
             $this->jobPosts = JobPost::with(['company'])
                 ->paginate($this->perPage);
         }
+
         return view('livewire.list-job-post', [
             'jobPosts' => $this->jobPosts
         ]);

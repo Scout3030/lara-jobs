@@ -28,7 +28,7 @@
     <section class="candidates-applied-jobs-area ptb-100">
         <div class="container">
             <div class="row">
-                @include('dashboard.partials.navigation')
+                @include('candidate.partials.navigation')
                 @livewire('applied-job-posts')
             </div>
         </div>

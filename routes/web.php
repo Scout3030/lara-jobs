@@ -68,7 +68,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 
-Route::group(["middleware" => ['auth', sprintf("role:%s", \App\Models\Role::ADMIN)]], function() {
+Route::group(["middleware" => ['auth', sprintf("role:%s", \App\Models\Role::COMPANY)]], function() {
 
     Route::view('/post-a-job', 'job.create')
         ->middleware(['auth'])
@@ -81,8 +81,11 @@ Route::group(["middleware" => ['auth', sprintf("role:%s", \App\Models\Role::ADMI
 
 Route::group(["middleware" => ['auth', sprintf("role:%s", \App\Models\Role::CANDIDATE)]], function() {
 
-    Route::view('/dashboard', 'dashboard.index')
-        ->name('dashboard.index');
+    Route::view('/dashboard', 'candidate.dashboard')
+        ->name('candidate.dashboard');
+
+    Route::view('/profile', 'candidate.profile')
+        ->name('candidate.profile');
 
     Route::get('/applied-jobs', [CandidateController::class, 'applied'])
         ->name('candidate.applied');

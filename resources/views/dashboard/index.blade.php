@@ -27,7 +27,7 @@
     <section class="candidates-dashboard-area ptb-100">
         <div class="container">
             <div class="row">
-                @include('dashboard.partials.navigation')
+                @include('candidate.partials.navigation')
                 <div class="col-lg-8">
                     <div class="candidates-dashboard-content">
                         <div class="candidates-dashboard">

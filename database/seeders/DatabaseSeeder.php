@@ -20,14 +20,14 @@ class DatabaseSeeder extends Seeder
 //
 //        $this->call(UserSeeder::class);
 //
-//        Storage::deleteDirectory('courses');
-//        Storage::makeDirectory('courses');
-//        $this->call(CourseSeeder::class);
-//
+        Storage::deleteDirectory('companies');
+        Storage::makeDirectory('companies');
+
         Storage::deleteDirectory('users');
         Storage::makeDirectory('users');
 
         $this->call([
+            GeneralDataSeeder::class,
             CurrencySeeder::class,
             CountrySeeder::class,
             DepartmentSeeder::class,
