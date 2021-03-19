@@ -81,7 +81,7 @@ Route::group(["middleware" => ['auth', sprintf("role:%s", \App\Models\Role::COMP
 
 Route::group(["middleware" => ['auth', sprintf("role:%s", \App\Models\Role::CANDIDATE)]], function() {
 
-    Route::view('/dashboard', 'candidate.dashboard')
+    Route::get('/dashboard', [CandidateController::class, 'dashboard'])
         ->name('candidate.dashboard');
 
     Route::view('/profile', 'candidate.profile')

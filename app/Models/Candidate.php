@@ -49,4 +49,9 @@ class Candidate extends Model
     public function jobPosts(){
         return $this->belongsToMany(JobPost::class);
     }
+
+    public function viewedJobs(){
+        return $this->belongsToMany(JobPost::class)
+                    ->wherePivot('viewed', 0);
+    }
 }

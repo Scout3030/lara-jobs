@@ -17,6 +17,7 @@ class CreateCandidatesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
+            $table->string('last_name')->nullable();
             $table->string('title')->nullable();
             $table->string('salary');
             $table->string('working_experience');

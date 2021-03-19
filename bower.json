@@ -1,0 +1,20 @@
+{
+  "name": "lara-jobs",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Roberth <rrodriguezj@uni.pe>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/Scout3030/lara-jobs",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "select2": "^4.0.13"
+  }
+}
