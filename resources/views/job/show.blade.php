@@ -4,29 +4,14 @@
 
 @endpush
 
-@section('breadcrumbs')
-{{--    {{ Breadcrumbs::render('home') }}--}}
-@endsection
+@push('facebook-sdk')
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v10.0&appId=696842661211386&autoLogAppEvents=1" nonce="Lldmrl2o"></script>
+@endpush
 
 @section('content')
 
-
-    <div class="page-title-area">
-        <div class="container">
-            <div class="page-title-content">
-                <h2>Job Details</h2>
-                <ul>
-                    <li>
-                        <a href="index.html">
-                            Home
-                        </a>
-                    </li>
-                    <li class="active">{{__('Job Details')}}</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
+    @include('partials.breadcrumb', ['title' => __('Job Details')])
 
     <section class="job-details-area ptb-100">
         <div class="container">
@@ -48,60 +33,30 @@
                                     </ul>
                                 </div>
                             </div>
-                            @can('apply', $jobPost)
-                                <div class="col-lg-4">
-                                    <div class="hot-jobs-btn">
-                                        <a href="#" class="default-btn">{{__('Apply Now')}}</a>
-                                        <p><span>{{__('Deadline')}}: </span>{{$jobPost->deadline->format('d-m-Y')}}</p>
-                                    </div>
-                                </div>
-                            @endcan
 
-                            @cannot('apply', $jobPost)
-                                <div class="col-lg-4">
-                                    <div class="hot-jobs-btn">
-                                        <a href="#" class="default-btn">{{__('Applied')}}</a>
-                                        <p><span>{{__('Deadline')}}: </span>{{$jobPost->deadline->format('d-m-Y')}}</p>
-                                    </div>
+                            <div class="col-lg-4">
+                                <div class="hot-jobs-btn">
+                                    <a href="#" class="default-btn">{{__('Apply')}}</a>
+                                    <p><span>{{__('Deadline')}}: </span>{{$jobPost->deadline->format('d-m-Y')}}</p>
                                 </div>
-                            @endcan
+                            </div>
 
                         </div>
                     </div>
                     <div class="job-details-content">
                         <h3>{{__('Job Description')}}</h3>
-                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Lorem ipsum dolor sit amet, consetetur</p>
-                        <h4>Responsibilities:</h4>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. A nisi aspernatur modi doloribus dolorem quidem! Neque placeat numquam vel magni ipsam, similique eligendi sunt laudantium, nihil alias soluta eos in Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et nam eveniet quasi.</p>
+                        <p>{{ $jobPost->description }}</p>
+                        <h4>{{__('Competencies')}}:</h4>
                         <ul>
-                            <li>Stet clita kasd gubergren, no sea takimata sanctus</li>
-                            <li>Lorem ipsum dolor sit amet lorem ipsum dolor sit amet</li>
-                            <li>Consetetur sadipscing elitr, sed diam nonumy eirmod tempor</li>
-                            <li>Aliquyam erat, sed diam voluptua</li>
+                            @foreach($jobPost->technologies as $technology)
+                            <li>{{ $technology->name }}</li>
+                            @endforeach
                         </ul>
-                        <h4>Qualifications:</h4>
+                        <h4>{{__('Experience')}}:</h4>
                         <ul>
-                            <li>Stet clita kasd gubergren, no sea takimata sanctus</li>
-                            <li>Lorem ipsum dolor sit amet lorem ipsum dolor sit amet</li>
-                            <li>Consetetur sadipscing elitr, sed diam nonumy eirmod tempor</li>
-                            <li>Aliquyam erat, sed diam voluptua</li>
-                        </ul>
-                        <h4>Competencies:</h4>
-                        <ul>
-                            <li>Stet clita kasd gubergren, no sea takimata sanctus</li>
-                            <li>Lorem ipsum dolor sit amet lorem ipsum dolor sit amet</li>
-                            <li>Consetetur sadipscing elitr, sed diam nonumy eirmod tempor</li>
-                            <li>Aliquyam erat, sed diam voluptua</li>
-                            <li>Stet clita kasd gubergren, no sea takimata sanctus</li>
-                            <li>Lorem ipsum dolor sit amet lorem ipsum dolor sit amet, </li>
-                            <li>Consetetur sadipscing elitr, sed diam nonumy eirmod tempor</li>
-                            <li>Aliquyam erat, sed diam voluptua.</li>
-                        </ul>
-                        <h4>Experience Requirements:</h4>
-                        <ul>
-                            <li>Stet clita kasd gubergren, no sea takimata sanctus</li>
-                            <li>Lorem ipsum dolor sit amet lorem ipsum dolor sit amet</li>
-                            <li>Consetetur sadipscing elitr, sed diam nonumy eirmod tempor</li>
+                            @foreach($jobPost->experience as $key => $experience)
+                            <li>{{$experience}}</li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>

@@ -16,7 +16,7 @@
                 <img src="{{asset('assets/images/logo.png')}}" alt="logo">
             </a>
             <div class="collapse navbar-collapse mean-menu">
-                @include('partials.navigation.' . \App\Models\User::navigation())
+                @include('partials.navigation.guest')
             </div>
         </nav>
     </div>

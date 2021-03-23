@@ -44,8 +44,8 @@
                     </div>
                     <div class="col-lg-6 col-md-6">
                         <div class="form-group">
-                            <label>Language</label>
-                            <select>
+                            <label for="language">Language</label>
+                            <select id="language">
                                 <option value="1">English</option>
                                 <option value="2">العربيّة</option>
                                 <option value="2">Flag Germany</option>

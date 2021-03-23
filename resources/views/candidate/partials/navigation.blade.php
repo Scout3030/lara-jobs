@@ -10,13 +10,13 @@
         </div>
         <ul>
             <li>
-                <a href="{{ route('candidate.dashboard') }}" @if(Route::currentRouteName() == 'candidate.dashboard') class="active" @endif>Dashboard</a>
+                <a href="{{ route('candidate.dashboard') }}" @if(Route::currentRouteName() == 'candidate.dashboard') class="active" @endif>{{__('Dashboard')}}</a>
             </li>
             <li>
-                <a href="{{ route('candidate.profile') }}" @if(Route::currentRouteName() == 'candidate.profile') class="active" @endif>Profile</a>
+                <a href="{{ route('candidate.profile') }}" @if(Route::currentRouteName() == 'candidate.profile') class="active" @endif>{{__('Profile')}}</a>
             </li>
             <li>
-                <a href="resume.html">Resume</a>
+                <a href="{{ route('candidate.resume') }}" @if(Route::currentRouteName() == 'candidate.resume') class="active" @endif">{{__('Resume')}}</a>
             </li>
             <li>
                 <a href="bookmarks.html">Bookmarks</a>

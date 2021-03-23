@@ -3,24 +3,9 @@
         <div class="job-widget">
             <h3>{{__('Share This Job')}}</h3>
             <ul class="social-icon">
-                <li>
-                    <a href="#">
+                <li class="fb-share-button" data-href="{{ route('job.show', ['jobPost' => $jobPost]) }}" data-layout="button_count" data-size="small">
+                    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ route('job.show', ['jobPost' => $jobPost]) }}&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">
                         <i class="bx bxl-facebook"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="bx bxl-instagram"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="bx bxl-linkedin-square"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="bx bxl-twitter"></i>
                     </a>
                 </li>
             </ul>

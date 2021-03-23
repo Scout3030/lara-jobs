@@ -23,11 +23,14 @@ class JobPostController extends Controller
         return back()->with('message', ['status' => 'success', 'message' => __('Oferta creada correctamente')]);
     }
 
-    public function search(){
-//        $query = request()->search;
-//        $jobPost = JobPost::where('title', 'LIKE', '%'.$query.'%')
-//            ->orWhere('description', 'LIKE', '%'.$query.'%')
-//            ->paginate(10);
-//        return view('job.index', compact('jobPost'));
+    public function list(){
+        $jobPosts = JobPost::query();
+        if(request()->has('q') && request()->q != null){
+            $query = request()->q;
+            $jobPosts = $jobPosts->where('title', 'LIKE', '%'.$query.'%')
+                ->orWhere('description', 'LIKE', '%'.$query.'%');
+        }
+        $jobPosts= $jobPosts->paginate(5);
+        return view('job.index', compact('jobPosts'));
     }
 }

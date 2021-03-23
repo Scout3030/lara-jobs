@@ -34,6 +34,7 @@
         <script src="{{ mix('js/app.js') }}" defer></script>
     </head>
     <body>
+        @stack('facebook-sdk')
 
         <!-- Page Heading -->
         @if(Route::currentRouteName() == 'home.index')

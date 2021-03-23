@@ -66,7 +66,8 @@ class JobPost extends Model
         'province_id',
         'description',
         'deadline',
-        'tag'
+        'tag',
+        'experience'
     ];
 
     protected $appends = [
@@ -75,6 +76,7 @@ class JobPost extends Model
 
     protected $casts = [
         'deadline' => 'datetime:Y-m-d',
+        'experience' => 'array'
     ];
 
 
@@ -116,5 +118,9 @@ class JobPost extends Model
 
     public function province(){
         return $this->belongsTo(Province::class);
+    }
+
+    public function technologies(){
+        return $this->belongsToMany(Technology::class);
     }
 }
