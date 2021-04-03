@@ -32,7 +32,6 @@ Route::get('/images/{path}/{attachment}', function($path, $attachment) {
     }
 });
 
-
 Route::get('/', [HomeController::class, 'index'])
     ->name('home.index');
 
@@ -46,11 +45,26 @@ Route::group(['prefix' => 'job'], function () {
 
 Route::group(["middleware" => ['auth', sprintf("role:%s", \App\Models\Role::ADMIN)]], function() {
 
-    Route::view('/post-a-job', 'job.create')
-        ->name('job.create');
+    Route::group(['prefix' => 'company'], function () {
+        Route::get('/', [CompanyController::class, 'index'])
+            ->name('company.index');
 
-    Route::post('/create', [JobPostController::class, 'store'])
-        ->name('job.store');
+        Route::get('/create', [CompanyController::class, 'create'])
+            ->name('company.create');
+
+        Route::post('/store', [CompanyController::class, 'store'])
+            ->name('company.store');
+    
+        Route::get('/datatable', [CompanyController::class, 'datatable'])
+            ->name('company.datatable');
+
+        Route::group(['prefix' => 'job'], function () {
+            Route::get('/create/{company:id}', [JobPostController::class, 'create'])
+                ->name('job.create');
+            Route::post('/store', [JobPostController::class, 'store'])
+                ->name('job.store');
+        });
+    });
 });
 
 Route::post('/subscription', [SubscriptionController::class, 'store'])

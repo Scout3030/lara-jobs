@@ -18,5 +18,13 @@ class UserZeroSeeder extends Seeder
             'name' => "admin",
             'email' => "admin@mail.com"
         ]);
+
+        \App\Models\User::factory(1)->create([
+            'role_id' => 2,
+            'name' => "default",
+            'email' => "default-company@mail.com"
+        ])->each(function (\App\Models\User $u) {
+            \App\Models\Company::factory(1)->create(['user_id' => $u->id]);
+        });
     }
 }

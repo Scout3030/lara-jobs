@@ -189,7 +189,7 @@ class CountrySeeder extends Seeder
             'PA' => 'Panama',
             'PG' => 'Papua New Guinea',
             'PY' => 'Paraguay',
-            'PE' => 'Peru',
+            'PE' => 'Perú',
             'PH' => 'Philippines',
             'PN' => 'Pitcairn',
             'PL' => 'Poland',

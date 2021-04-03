@@ -18,7 +18,7 @@
 
                 <h3>{{__('Job Information')}}</h3>
 
-                <livewire:post-form />
+                <livewire:post-form :company="$company"/>
 
             </div>
         </div>

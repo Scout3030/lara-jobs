@@ -36,6 +36,12 @@ class Company extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'title',
+        'website_url',
+        'biography'
+    ];
+
     public function getRouteKeyName(){
         return 'slug';
     }
@@ -46,5 +52,15 @@ class Company extends Model
 
     public function jobPosts(){
         return $this->hasMany(JobPost::class);
+    }
+
+    public static function boot () {
+        parent::boot();
+
+        static::saving(function(Company $company) {
+            if( ! \App::runningInConsole() ) {
+                $company->user_id = 2;
+            }
+        });
     }
 }

@@ -58,6 +58,9 @@ use Illuminate\Support\Str;
  * @method static \Illuminate\Database\Eloquent\Builder|JobPost whereHowToApply($value)
  * @method static \Illuminate\Database\Eloquent\Builder|JobPost whereLocation($value)
  * @method static \Illuminate\Database\Eloquent\Builder|JobPost whereVacancies($value)
+ * @property-read \App\Models\Country $country
+ * @property-read \App\Models\Department $department
+ * @property-read \App\Models\Experience $experience
  */
 class JobPost extends Model
 {
@@ -81,7 +84,8 @@ class JobPost extends Model
         'experience_id',
         'location',
         'salary',
-        'how_to_apply'
+        'how_to_apply',
+        'vacancies'
     ];
 
     protected $appends = [

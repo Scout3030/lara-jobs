@@ -31,7 +31,7 @@
                     </div>
                 </li>
             </ul>
-            @guest
+            {{-- @guest
             <ul class="log-in">
                 <li>
                     <a href="{{ route('login') }}">
@@ -46,7 +46,25 @@
                     </a>
                 </li>
             </ul>
-            @endguest
+            @endguest --}}
+            @auth
+            <ul class="log-in">
+                <li>
+                    <a href="{{ route('company.index') }}">
+                        {{__('Companies')}}
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('logout') }}"
+                       onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();"
+                    ><i class="bx bxs-user"></i>{{__('Log Out')}}</a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                </li>
+            </ul>
+            @endauth
         </div>
     </div>
 </div>

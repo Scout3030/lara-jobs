@@ -33,6 +33,10 @@ class JobPostRequest extends FormRequest
             "deadline" => "required|date|after:now",
             "salary" => "nullable|min:1",
             "vacancies" => "min:1",
+            'company_id' => [
+                'required',
+                Rule::exists('companies', 'id')
+            ],
             "experience_id" => [
                 'required',
                 Rule::exists('experiences', 'id')

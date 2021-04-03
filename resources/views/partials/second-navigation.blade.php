@@ -30,7 +30,7 @@
                 <div class="circle circle-three"></div>
             </div>
         </div>
-        <div class="container">
+        {{-- <div class="container">
             <div class="option-inner">
                 <div class="others-option justify-content-center d-flex align-items-center">
                     <div class="get-quote">
@@ -40,6 +40,6 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </div>
 </div>

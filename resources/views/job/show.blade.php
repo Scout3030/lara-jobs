@@ -29,7 +29,7 @@
                                     <h3>{{$jobPost->title}}</h3>
                                     <span class="sub-title">{{$jobPost->company->title}}</span>
                                     <ul>
-                                        <li><span>{{__('Vacancy')}}:</span> 01</li>
+                                        <li><span>{{__('Vacancies')}}:</span> {{ $jobPost->vacancies }}</li>
                                     </ul>
                                 </div>
                             </div>
@@ -69,7 +69,6 @@
 @endpush
 
 @push('modals')
-
     <!-- Modal -->
     <div class="modal fade" id="applyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">

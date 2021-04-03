@@ -18,6 +18,10 @@
                     <span>: {{$jobPost->created_at->format('d-m-Y')}}</span>
                 </li>
                 <li>
+                    {{__('Deadline')}}
+                    <span>: {{ $jobPost->deadline->format('d-m-Y') }}</span>
+                </li>
+                <li>
                     {{__('Vacancies')}}
                     <span>: {{ $jobPost->vacancies }}</span>
                 </li>
@@ -33,14 +37,12 @@
                     {{__('Job Location')}}
                     <span>: {{ $jobPost->customLocation() }}</span>
                 </li>
+                @if($jobPost->salary)
                 <li>
                     {{__('Salary')}}
                     <span>: {{ $jobPost->salary }} USD</span>
                 </li>
-                <li>
-                    {{__('Application Deu')}}
-                    <span>: {{ $jobPost->deadline->format('d.m.Y') }}</span>
-                </li>
+                @endif
             </ul>
         </div>
     </div>

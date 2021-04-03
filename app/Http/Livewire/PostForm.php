@@ -7,6 +7,7 @@ use Livewire\Component;
 
 class PostForm extends Component
 {
+    public $company;
     public $departments = [];
 
     protected $listeners = ['searchDepartment' => 'filterDepartments'];
@@ -17,14 +18,11 @@ class PostForm extends Component
             ->get();
     }
 
-    public function postAdded(){
-        dd(1);
-    }
-
     public function render()
     {
         return view('livewire.post-form', [
             'departments' => $this->departments,
+            'company' => $this->company
         ]);
     }
 }

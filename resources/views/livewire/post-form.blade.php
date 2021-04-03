@@ -4,6 +4,13 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="form-group">
+                    <label for="company_id">{{__('Company')}}*</label>
+                    <input class="form-control" type="text" readonly value="{{ $company->title }}">
+                    <input id="company_id" class="form-control" type="hidden" name="company_id" autocomplete="off" required value="{{ $company->id }}">
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="form-group">
                     <label for="title">{{__('Job title')}}*</label>
                     <input id="title" class="form-control" type="text" name="title" autocomplete="off" required value="{{ old('title') }}">
                 </div>
