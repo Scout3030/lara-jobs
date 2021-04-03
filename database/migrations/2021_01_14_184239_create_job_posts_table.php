@@ -19,8 +19,6 @@ class CreateJobPostsTable extends Migration
             $table->foreign('company_id')->references('id')->on('companies');
             $table->unsignedBigInteger('job_type_id');
             $table->foreign('job_type_id')->references('id')->on('job_types');
-            $table->unsignedBigInteger('province_id');
-            $table->foreign('province_id')->references('id')->on('provinces');
             $table->unsignedBigInteger('currency_id')->default(3);
             $table->foreign('currency_id')->references('id')->on('currencies');
             $table->unsignedBigInteger('experience_id')->default(3);

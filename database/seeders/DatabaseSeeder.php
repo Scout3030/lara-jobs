@@ -23,18 +23,28 @@ class DatabaseSeeder extends Seeder
         Storage::deleteDirectory('users');
         Storage::makeDirectory('users');
 
+//        $this->call([
+//            TechnologySeeder::class,
+//            GeneralDataSeeder::class,
+//            CurrencySeeder::class,
+//            ExperienceSeeder::class,
+//            CountrySeeder::class,
+//            DepartmentSeeder::class,
+//            ProvinceSeeder::class,
+//            JobTypeSeeder::class,
+//            RoleSeeder::class,
+//            UserSeeder::class,
+//            JobPostSeeder::class
+//        ]);
+
         $this->call([
             TechnologySeeder::class,
             GeneralDataSeeder::class,
             CurrencySeeder::class,
             ExperienceSeeder::class,
-            CountrySeeder::class,
-            DepartmentSeeder::class,
-            ProvinceSeeder::class,
             JobTypeSeeder::class,
             RoleSeeder::class,
-            UserSeeder::class,
-            JobPostSeeder::class
+            UserZeroSeeder::class,
         ]);
     }
 }

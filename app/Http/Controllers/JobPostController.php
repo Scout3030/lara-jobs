@@ -14,24 +14,20 @@ class JobPostController extends Controller
     }
 
     public function store(JobPostRequest $request){
-        dd($request->all());
         $jobPost = JobPost::create([
             'job_type_id' => $request->job_type_id,
             'experience_id' => $request->experience_id,
-            'province_id' => 123,
-            'currency_id' => 3,
+            'currency_id' => 1,
             'title' => $request->title,
             'description' => $request->description,
             'deadline' => \Carbon\Carbon::parse($request->deadline)->format('Y-m-d'),
             'salary' => $request->salary,
             'tag' => $request->tag,
         ]);
-
         foreach($request->technologies as $technology_id){
             $jobPost->technologies()->attach($technology_id);
         }
-
-        return back()->with('message', ['status' => 'success', 'message' => __('Oferta creada correctamente')]);
+        return back()->with('message', ['status' => 'success', 'message' => __('Job post created successfully')]);
     }
 
     public function list(){

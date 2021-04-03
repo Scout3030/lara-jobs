@@ -13,7 +13,7 @@
                     <label for="job_type_id">{{__('Job Types')}}*</label>
                     <select id="job_type_id" name="job_type_id" required>
                         @foreach(\App\Models\JobType::get() as $jobType)
-                            <option value="{{$jobType->id}}">{{$jobType->name}}</option>
+                            <option value="{{$jobType->id}}" @if(old('job_type_id') == $jobType->id) selected @endif>{{$jobType->name}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -46,7 +46,7 @@
                     <label for="experience_id">{{__('Experience')}}*</label>
                     <select id="experience_id" name="experience_id" required>
                         @foreach(\App\Models\Experience::get() as $experience)
-                            <option value="{{$experience->id}}">{{$experience->name}}</option>
+                            <option value="{{$experience->id}}" @if(old('experience_id') == $experience->id) selected @endif>{{$experience->name}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -55,9 +55,9 @@
                 <div class="form-group">
                     <label for="tag">{{__('Tag')}}*</label>
                     <select id="tag" name="tag" required>
-                        <option value="1">{{ __('Featured') }}</option>
-                        <option value="2">{{ __('Urgent') }}</option>
-                        <option value="3">{{ __('Immediate') }}</option>
+                        <option value="1" @if(old('tag') == 1) selected @endif>{{ __('Featured') }}</option>
+                        <option value="2" @if(old('tag') == 2) selected @endif>{{ __('Urgent') }}</option>
+                        <option value="3" @if(old('tag') == 3) selected @endif>{{ __('Immediate') }}</option>
                     </select>
                 </div>
             </div>
@@ -112,7 +112,7 @@
                     <p>
                         @foreach(\App\Models\Technology::get() as $technology)
                             {{__($technology->name)}}
-                            <input type="checkbox" name="technologies[]" value="{{ $technology->id }}" class="mr-3">
+                            <input type="checkbox" name="technologies[]" value="{{ $technology->id }}" class="mr-3" @if( Arr::exists(old('technologies'), $technology->id -1 ) ) checked @endif>
                         @endforeach
                     </p>
                 </div>
@@ -127,4 +127,3 @@
         </div>
     </form>
 </div>
-

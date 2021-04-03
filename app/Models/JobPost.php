@@ -98,24 +98,27 @@ class JobPost extends Model
 
         static::saving(function(JobPost $jobPost) {
             if( ! \App::runningInConsole() ) {
-                if(request()->has('province_id')){
+                $province = null;
+                $department = null;
+                $country = null;
+                if(request()->has('province_id') && request()->province_id != null){
                     $province = Province::with('department.country')
                         ->findOrFail(request()->province_id);
                     $department = $province->department;
                     $country = $province->department->country;
                 }
-                if(!request()->has('province_id') && request()->has('department_id')){
+                if(!request()->has('province_id') && request()->has('department_id') && request()->department_id != null){
                     $department = Department::with('country')
                         ->findOrFail(request()->department_id);
                     $country = $department->country;
                 }
-                if(!request()->has('province_id') && !request()->has('department_id') && request()->has('country_id')){
+                if(!request()->has('province_id') && !request()->has('department_id') && request()->has('country_id') && request()->country_id != null){
                     $country = Country::findOrFail(request()->country_id);
                 }
                 $location = [
                     'province_id' => $province ? $province->id : null,
                     'department_id' => $department ? $department->id : null,
-                    'country_id' => $country ? $department->country->id : null
+                    'country_id' => $country ? $department->country->id : request()->country_id
                 ];
                 $jobPost->slug = Str::slug($jobPost->title, "-")."-".strtotime(Carbon::now());
                 $jobPost->company_id = 1;
@@ -142,12 +145,11 @@ class JobPost extends Model
     }
 
     public function getCustomTagAttribute(){
-        $tags = [
+        return [
             self::FEATURED => ['class' => 'featured', 'text' => __('Featured')],
             self::URGENT => ['class' => 'featured red', 'text' => __('Urgent')],
             self::IMMEDIATE => ['class' => 'featured', 'text' => __('Immediate hiring')]
-        ];
-        return $tags[$this->tag];
+        ][$this->tag];
     }
 
     public function province(){
