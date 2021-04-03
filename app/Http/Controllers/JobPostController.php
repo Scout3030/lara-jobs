@@ -45,7 +45,15 @@ class JobPostController extends Controller
             $jobPosts = $jobPosts->where('title', 'LIKE', '%'.$query.'%')
                 ->orWhere('description', 'LIKE', '%'.$query.'%');
         }
-        $jobPosts= $jobPosts->paginate(5);
+        if(request()->has('jobType') && request()->jobType != null && request()->jobType != 0){
+            $jobPosts = $jobPosts->whereJobTypeId(request()->jobType);
+        }
+
+        if(request()->has('date') && request()->date != null && request()->date != 0){
+            $date = \Carbon\Carbon::now()->subDays(request()->date)->format('Y-m-d'); 
+            $jobPosts = $jobPosts->whereDate('created_at', '>=', $date);
+        }
+        $jobPosts= $jobPosts->orderByDesc('created_at')->paginate(5)->withQueryString();
         return view('job.index', compact('jobPosts'));
     }
 }

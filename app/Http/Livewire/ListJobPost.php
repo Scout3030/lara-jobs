@@ -18,11 +18,9 @@ class ListJobPost extends Component
 
     protected $listeners = ['searchingPosts' => 'filteredJobPosts'];
 
-    public function filteredJobPosts($filters = null){
-        if($filters){
-            dd(array_keys($filters));
-        }
-        $this->jobPosts = JobPost::with(['company'])
+    public function filteredJobPosts(){
+        $this->jobPosts = JobPost::orderByDesc('created_at')
+            ->with(['company'])
             ->paginate($this->perPage);
         $this->fired = true;
     }
@@ -30,7 +28,8 @@ class ListJobPost extends Component
     public function render()
     {
         if(!$this->fired){
-            $this->jobPosts = JobPost::with(['company'])
+            $this->jobPosts = JobPost::orderByDesc('created_at')
+                ->with(['company'])
                 ->paginate($this->perPage);
         }
 

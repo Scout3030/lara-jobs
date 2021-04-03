@@ -24,4 +24,8 @@ use Illuminate\Database\Eloquent\Model;
 class JobType extends Model
 {
     use HasFactory;
+
+    public function jobPosts(){
+        return $this->hasMany(JobPost::class);
+    }
 }
