@@ -11,15 +11,15 @@
             </ul>
         </div>
         <div class="job-widget">
-            <h3>Job Overview</h3>
+            <h3>{{__('Job Overview')}}</h3>
             <ul class="overview">
                 <li>
                     {{__('Published On')}}
                     <span>: {{$jobPost->created_at->format('d-m-Y')}}</span>
                 </li>
                 <li>
-                    {{__('Vacancy')}}
-                    <span>: 01</span>
+                    {{__('Vacancies')}}
+                    <span>: {{ $jobPost->vacancies }}</span>
                 </li>
                 <li>
                     {{__('Job Type')}}
@@ -27,15 +27,15 @@
                 </li>
                 <li>
                     {{__('Experience')}}
-                    <span>: 3 Year(s)</span>
+                    <span>: {{ $jobPost->experience->name }}</span>
                 </li>
                 <li>
                     {{__('Job Location')}}
-                    <span>: {{ $jobPost->location }}</span>
+                    <span>: {{ $jobPost->customLocation() }}</span>
                 </li>
                 <li>
                     {{__('Salary')}}
-                    <span>: $700.00</span>
+                    <span>: {{ $jobPost->salary }} USD</span>
                 </li>
                 <li>
                     {{__('Application Deu')}}

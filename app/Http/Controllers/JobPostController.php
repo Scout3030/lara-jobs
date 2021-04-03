@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class JobPostController extends Controller
 {
     public function show(JobPost $jobPost){
-        $jobPost->load(['company.user', 'location']);
+        $jobPost->load(['company.user', 'experience']);
         return view('job.show', compact('jobPost'));
     }
 

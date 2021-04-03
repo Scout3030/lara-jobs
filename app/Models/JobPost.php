@@ -61,6 +61,7 @@ use Illuminate\Support\Str;
  */
 class JobPost extends Model
 {
+    use \Staudenmeir\EloquentJsonRelations\HasJsonRelationships;
     use HasFactory;
 
     const FEATURED = 1;
@@ -85,11 +86,11 @@ class JobPost extends Model
 
     protected $appends = [
         'custom_tag',
+        'custom_location'
     ];
 
     protected $casts = [
         'deadline' => 'datetime:Y-m-d',
-        'experience' => 'array',
         'location' => 'array'
     ];
 
@@ -153,11 +154,33 @@ class JobPost extends Model
         ][$this->tag];
     }
 
-    public function location(){
-        return $this->belongsTo(Province::class);
-    }
-
     public function technologies(){
         return $this->belongsToMany(Technology::class);
+    }
+
+    public function experience(){
+        return $this->belongsTo(Experience::class);
+    }
+
+    public function country(){
+        return $this->belongsTo(Country::class, 'location->country_id');
+    }
+
+    public function department(){
+        return $this->belongsTo(Department::class, 'location->department_id');
+    }
+
+    public function province(){
+        return $this->belongsTo(Province::class, 'location->province_id');
+    }
+
+    public function customLocation(){
+        if($this->location['province_id'] != null){
+            return "{$this->province->name}, {$this->department->name}, {$this->country->name}";
+        }
+        if($this->location['department_id'] != null){
+            return "{$this->department->name}, {$this->country->name}";
+        }
+        return "{$this->country->name}";
     }
 }

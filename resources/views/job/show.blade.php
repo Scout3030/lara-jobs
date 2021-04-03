@@ -53,16 +53,6 @@
                             <li>{{ $technology->name }}</li>
                             @endforeach
                         </ul>
-                        @if($jobPost->experience)
-                        <h4>{{__('Experience')}}:</h4>
-                        <ul>
-
-                            @forelse($jobPost->experience as $key => $experience)
-                            <li>{{$experience}}</li>
-                            @empty
-                            @endforelse
-                        </ul>
-                        @endif
                     </div>
                 </div>
                 @include('job.partials.right-sidebar')
