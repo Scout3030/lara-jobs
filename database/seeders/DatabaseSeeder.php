@@ -16,10 +16,7 @@ class DatabaseSeeder extends Seeder
     {
 //        Storage::deleteDirectory('categories');
 //        Storage::makeDirectory('categories');
-//        $this->call(UserSeeder::class);
-//
-//        $this->call(UserSeeder::class);
-//
+
         Storage::deleteDirectory('companies');
         Storage::makeDirectory('companies');
 
@@ -27,8 +24,10 @@ class DatabaseSeeder extends Seeder
         Storage::makeDirectory('users');
 
         $this->call([
+            TechnologySeeder::class,
             GeneralDataSeeder::class,
             CurrencySeeder::class,
+            ExperienceSeeder::class,
             CountrySeeder::class,
             DepartmentSeeder::class,
             ProvinceSeeder::class,

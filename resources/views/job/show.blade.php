@@ -36,7 +36,8 @@
 
                             <div class="col-lg-4">
                                 <div class="hot-jobs-btn">
-                                    <a href="#" class="default-btn">{{__('Apply')}}</a>
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="default-btn" data-toggle="modal" data-target="#applyModal">{{__('Apply')}}</button>
                                     <p><span>{{__('Deadline')}}: </span>{{$jobPost->deadline->format('d-m-Y')}}</p>
                                 </div>
                             </div>
@@ -52,12 +53,16 @@
                             <li>{{ $technology->name }}</li>
                             @endforeach
                         </ul>
+                        @if($jobPost->experience)
                         <h4>{{__('Experience')}}:</h4>
                         <ul>
-                            @foreach($jobPost->experience as $key => $experience)
+
+                            @forelse($jobPost->experience as $key => $experience)
                             <li>{{$experience}}</li>
-                            @endforeach
+                            @empty
+                            @endforelse
                         </ul>
+                        @endif
                     </div>
                 </div>
                 @include('job.partials.right-sidebar')
@@ -71,4 +76,24 @@
 
 @push('scripts')
 
+@endpush
+
+@push('modals')
+
+    <!-- Modal -->
+    <div class="modal fade" id="applyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">{{__('How to apply?')}}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    {{ $jobPost->how_to_apply }}
+                </div>
+            </div>
+        </div>
+    </div>
 @endpush

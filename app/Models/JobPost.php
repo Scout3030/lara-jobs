@@ -48,6 +48,16 @@ use Illuminate\Support\Str;
  * @property string|null $salary
  * @method static \Illuminate\Database\Eloquent\Builder|JobPost whereCurrencyId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|JobPost whereSalary($value)
+ * @property int $experience_id
+ * @property int $vacancies
+ * @property array|null $location
+ * @property string $how_to_apply
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Technology[] $technologies
+ * @property-read int|null $technologies_count
+ * @method static \Illuminate\Database\Eloquent\Builder|JobPost whereExperienceId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|JobPost whereHowToApply($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|JobPost whereLocation($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|JobPost whereVacancies($value)
  */
 class JobPost extends Model
 {
@@ -67,7 +77,9 @@ class JobPost extends Model
         'description',
         'deadline',
         'tag',
-        'experience'
+        'experience_id',
+        'location',
+        'salary'
     ];
 
     protected $appends = [
@@ -76,7 +88,8 @@ class JobPost extends Model
 
     protected $casts = [
         'deadline' => 'datetime:Y-m-d',
-        'experience' => 'array'
+        'experience' => 'array',
+        'location' => 'array'
     ];
 
 
@@ -85,8 +98,29 @@ class JobPost extends Model
 
         static::saving(function(JobPost $jobPost) {
             if( ! \App::runningInConsole() ) {
+                if(request()->has('province_id')){
+                    $province = Province::with('department.country')
+                        ->findOrFail(request()->province_id);
+                    $department = $province->department;
+                    $country = $province->department->country;
+                }
+                if(!request()->has('province_id') && request()->has('department_id')){
+                    $department = Department::with('country')
+                        ->findOrFail(request()->department_id);
+                    $country = $department->country;
+                }
+                if(!request()->has('province_id') && !request()->has('department_id') && request()->has('country_id')){
+                    $country = Country::findOrFail(request()->country_id);
+                }
+                $location = [
+                    'province_id' => $province ? $province->id : null,
+                    'department_id' => $department ? $department->id : null,
+                    'country_id' => $country ? $department->country->id : null
+                ];
                 $jobPost->slug = Str::slug($jobPost->title, "-")."-".strtotime(Carbon::now());
-                $jobPost->company_id = auth()->user()->company->id;
+                $jobPost->company_id = 1;
+                $jobPost->location = $location;
+//                $jobPost->company_id = auth()->user()->company->id;
             }
         });
     }

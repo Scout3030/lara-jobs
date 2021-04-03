@@ -28,6 +28,6 @@ class Country extends Model
     use HasFactory;
 
     public function departments(){
-        return $this->belongsToMany(Department::class);
+        return $this->hasMany(Department::class);
     }
 }

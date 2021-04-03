@@ -37,6 +37,10 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\JobPost[] $jobPosts
  * @property-read int|null $job_posts_count
  * @property-read \App\Models\User $user
+ * @property string|null $last_name
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\JobPost[] $viewedJobs
+ * @property-read int|null $viewed_jobs_count
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereLastName($value)
  */
 class Candidate extends Model
 {

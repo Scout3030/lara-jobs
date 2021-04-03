@@ -70,5 +70,7 @@
         <script src="{{asset('assets/js/contact-form-script.js')}}"></script>
         <script src="{{asset('assets/js/ajaxchimp.min.js')}}"></script>
         <script src="{{asset('assets/js/custom.js')}}"></script>
+
+        @stack('scripts')
     </body>
 </html>

@@ -29,7 +29,11 @@ class JobPostFactory extends Factory
             'company_id' => null,
             'job_type_id' => \App\Models\JobType::get()->random()->id,
             'province_id' => \App\Models\Province::get()->random()->id,
+            'experience_id' => \App\Models\Experience::get()->random()->id,
+            'currency_id' => \App\Models\Currency::get()->random()->id,
+            'salary' => $this->faker->randomFloat(0,300,3000),
             'slug' => Str::slug($title, '-'),
+            'how_to_apply' => $this->faker->sentence,
             'deadline' => $this->faker->dateTimeBetween('now', '+2 months', 'America/Lima'),
             'tag' => $this->faker->randomElement([\App\Models\JobPost::FEATURED, \App\Models\JobPost::URGENT])
         ];

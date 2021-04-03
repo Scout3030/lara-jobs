@@ -4,8 +4,11 @@ use App\Http\Controllers\CandidateController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JobPostController;
+use App\Http\Controllers\SubscriptionController;
+use App\Models\Subscription;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,6 +32,7 @@ Route::get('/images/{path}/{attachment}', function($path, $attachment) {
     }
 });
 
+
 Route::get('/', [HomeController::class, 'index'])
     ->name('home.index');
 
@@ -45,11 +49,15 @@ Route::group(['prefix' => 'job'], function () {
 Route::group(["middleware" => ['auth', sprintf("role:%s", \App\Models\Role::ADMIN)]], function() {
 
     Route::view('/post-a-job', 'job.create')
-        ->middleware(['auth'])
         ->name('job.create');
 
     Route::post('/create', [JobPostController::class, 'store'])
-        ->middleware(['auth'])
         ->name('job.store');
 });
+
+Route::post('/subscription', [SubscriptionController::class, 'store'])
+    ->name('subscription.store');
+
+Route::get('/department-by-country', [DepartmentController::class, 'departmentByCountry'])
+    ->name('department-by-country.index');
 

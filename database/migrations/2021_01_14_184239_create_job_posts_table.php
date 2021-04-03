@@ -23,12 +23,16 @@ class CreateJobPostsTable extends Migration
             $table->foreign('province_id')->references('id')->on('provinces');
             $table->unsignedBigInteger('currency_id')->default(3);
             $table->foreign('currency_id')->references('id')->on('currencies');
+            $table->unsignedBigInteger('experience_id')->default(3);
+            $table->foreign('experience_id')->references('id')->on('experiences');
             $table->string('title');
             $table->string('description');
-            $table->string('experience');
+            $table->integer('vacancies')->default(1);
+            $table->json('location');
             $table->string('salary')->nullable();
             $table->string('slug')->unique();
             $table->date('deadline')->nullable();
+            $table->string('how_to_apply', 1000);
             $table->enum('tag', [
                 \App\Models\JobPost::FEATURED, \App\Models\JobPost::URGENT, \App\Models\JobPost::IMMEDIATE
             ])->comment('1: Featured, 2:Urgent, 3:Immediate')

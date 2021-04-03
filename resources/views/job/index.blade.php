@@ -1,9 +1,5 @@
 @extends('layouts.app')
 
-@push('styles')
-stylesrob
-@endpush
-
 @section('content')
 
     @include('partials.breadcrumb', ['title' => __('Job Listing')])

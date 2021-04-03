@@ -55,6 +55,8 @@ use Laravel\Sanctum\HasApiTokens;
  * @property-read \App\Models\Candidate $candidate
  * @property-read \App\Models\Company $company
  * @property-read \App\Models\Role|null $role
+ * @property string|null $post_code
+ * @method static \Illuminate\Database\Eloquent\Builder|User wherePostCode($value)
  */
 class User extends Authenticatable
 {
