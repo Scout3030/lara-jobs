@@ -40,7 +40,7 @@
                 @if($jobPost->salary)
                 <li>
                     {{__('Salary')}}
-                    <span>: {{ $jobPost->salary }} USD</span>
+                    <span>: USD {{ $jobPost->salary }}</span>
                 </li>
                 @endif
             </ul>
