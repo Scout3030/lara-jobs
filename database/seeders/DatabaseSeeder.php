@@ -14,9 +14,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-//        Storage::deleteDirectory('categories');
-//        Storage::makeDirectory('categories');
-
         Storage::deleteDirectory('companies');
         Storage::makeDirectory('companies');
 
@@ -44,6 +41,7 @@ class DatabaseSeeder extends Seeder
             ExperienceSeeder::class,
             JobTypeSeeder::class,
             RoleSeeder::class,
+            CountrySeeder::class,
             UserZeroSeeder::class,
         ]);
     }

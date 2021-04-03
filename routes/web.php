@@ -42,8 +42,6 @@ Route::group(['prefix' => 'job'], function () {
 
     Route::get('/show/{jobPost:slug}', [JobPostController::class, 'show'])
         ->name('job.show');
-
-    Route::view('/detail', 'job.show');
 });
 
 Route::group(["middleware" => ['auth', sprintf("role:%s", \App\Models\Role::ADMIN)]], function() {
@@ -57,7 +55,3 @@ Route::group(["middleware" => ['auth', sprintf("role:%s", \App\Models\Role::ADMI
 
 Route::post('/subscription', [SubscriptionController::class, 'store'])
     ->name('subscription.store');
-
-Route::get('/department-by-country', [DepartmentController::class, 'departmentByCountry'])
-    ->name('department-by-country.index');
-

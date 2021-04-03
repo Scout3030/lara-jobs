@@ -10,10 +10,10 @@
 {{--        </a>--}}
 {{--    </li>--}}
 </ul>
-<div class="others-option">
-    <div class="get-quote">
-        <a href="{{ route('job.create') }}" class="default-btn">
-            {{__('Post a Job')}}
-        </a>
-    </div>
-</div>
+{{--<div class="others-option">--}}
+{{--    <div class="get-quote">--}}
+{{--        <a href="{{ route('job.create') }}" class="default-btn">--}}
+{{--            {{__('Post a Job')}}--}}
+{{--        </a>--}}
+{{--    </div>--}}
+{{--</div>--}}

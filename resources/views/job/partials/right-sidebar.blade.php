@@ -31,10 +31,7 @@
                 </li>
                 <li>
                     {{__('Job Location')}}
-                    <span>: {{ $jobPost->province->name }},
-                        {{ $jobPost->province->department->name }},
-                        {{ $jobPost->province->department->country->name }}
-                    </span>
+                    <span>: {{ $jobPost->location }}</span>
                 </li>
                 <li>
                     {{__('Salary')}}

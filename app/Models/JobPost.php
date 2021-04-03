@@ -79,7 +79,8 @@ class JobPost extends Model
         'tag',
         'experience_id',
         'location',
-        'salary'
+        'salary',
+        'how_to_apply'
     ];
 
     protected $appends = [
@@ -152,7 +153,7 @@ class JobPost extends Model
         ][$this->tag];
     }
 
-    public function province(){
+    public function location(){
         return $this->belongsTo(Province::class);
     }
 

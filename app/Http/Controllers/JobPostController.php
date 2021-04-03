@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class JobPostController extends Controller
 {
     public function show(JobPost $jobPost){
-        $jobPost->load(['company.user', 'province.department.country']);
+        $jobPost->load(['company.user', 'location']);
         return view('job.show', compact('jobPost'));
     }
 
@@ -23,6 +23,7 @@ class JobPostController extends Controller
             'deadline' => \Carbon\Carbon::parse($request->deadline)->format('Y-m-d'),
             'salary' => $request->salary,
             'tag' => $request->tag,
+            'how_to_apply' => $request->how_to_apply
         ]);
         foreach($request->technologies as $technology_id){
             $jobPost->technologies()->attach($technology_id);
