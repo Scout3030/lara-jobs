@@ -20,6 +20,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|JobType whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|JobType whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\JobPost[] $jobPosts
+ * @property-read int|null $job_posts_count
  */
 class JobType extends Model
 {

@@ -23,16 +23,16 @@
                 <div class="single-footer-widget">
                     <h3>{{__('Contact')}}</h3>
                     <ul class="address">
-                        <li>
+                        {{-- <li>
                             <i class="bx bx-phone-call"></i>
                             <span>{{__('Phone')}}:</span>
-                            <a href="tel:+1-(514)-7939-357">{{\App\Models\GeneralData::get()->first()->phone_number}}</a>
-                        </li>
+                            <a href="tel:{{\App\Models\GeneralData::get()->first()->phone_number}}">{{\App\Models\GeneralData::get()->first()->phone_number}}</a>
+                        </li> --}}
                         <li>
                             <i class="bx bx-envelope"></i>
                             <span>{{__('Email')}}:</span>
                             <a href="javascript:void(0)">
-                                <span class="__cf_email__">{{\App\Models\GeneralData::get()->first()->email}}</span>
+                                {{\App\Models\GeneralData::get()->first()->email}}
                             </a>
                         </li>
                         <li class="location">
@@ -51,11 +51,10 @@
     <div class="container">
         <p>
             © 2021 {{env('APP_NAME')}}
-            <a href="https://www.fiverr.com/share/1bwWLp" target="_blank">Roberth Rodriguez</a>
+            <a href="https://www.fiverr.com/share/1bwWLp" target="_blank">Laravel The Web Artisan</a>
         </p>
     </div>
 </div>
-
 
 <div class="go-top">
     <i class="bx bx-chevrons-up"></i>

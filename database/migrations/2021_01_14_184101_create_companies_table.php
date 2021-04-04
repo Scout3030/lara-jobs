@@ -20,6 +20,7 @@ class CreateCompaniesTable extends Migration
             $table->string('title')->nullable();
             $table->text('biography')->nullable();
             $table->string('website_url')->nullable();
+            $table->string('logo')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

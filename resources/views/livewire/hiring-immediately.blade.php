@@ -8,7 +8,7 @@
                 @foreach($chunk as $jobPost)
                 <li wire:key="{{ $jobPost->id }}">
                     <a href="{{ route('job.show', ['jobPost' => $jobPost]) }}" class="hiring-img">
-                        <img src="{{ $jobPost->company->user->profile_photo_url }}" alt="{{ $jobPost->company->title }}">
+                        <img src="{{ $jobPost->company->logo() }}" alt="{{ $jobPost->company->title }}">
                     </a>
                     <a href="{{ route('job.show', ['jobPost' => $jobPost]) }}" class="link">{{ $jobPost->title }}</a>
                     <span>{{ $jobPost->company->title }}</span>

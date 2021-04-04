@@ -21,6 +21,7 @@ class HiringImmediately extends Component
     public function filteredImmediateJobPosts(){
         $this->immediateJobPosts = JobPost::with(['company'])
             ->where('tag', JobPost::IMMEDIATE)
+            ->inRandomOrder()
             ->paginate($this->perPage);
         $this->fired = true;
     }
@@ -30,6 +31,7 @@ class HiringImmediately extends Component
         if(!$this->fired) {
             $this->immediateJobPosts = JobPost::with(['company'])
                 ->where('tag', JobPost::IMMEDIATE)
+                ->inRandomOrder()
                 ->paginate($this->perPage);
         }
 

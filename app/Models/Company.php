@@ -31,6 +31,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Company whereDeletedAt($value)
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\JobPost[] $jobPosts
  * @property-read int|null $job_posts_count
+ * @property string|null $logo
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereLogo($value)
  */
 class Company extends Model
 {
@@ -39,8 +41,13 @@ class Company extends Model
     protected $fillable = [
         'title',
         'website_url',
-        'biography'
+        'biography',
+        'logo'
     ];
+
+    public function logo () {
+    	return "/images/companies/" . $this->logo;
+    }
 
     public function getRouteKeyName(){
         return 'slug';

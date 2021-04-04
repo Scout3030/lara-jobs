@@ -19,7 +19,7 @@
                         <div class="row align-items-center">
                             <div class="col-lg-2">
                                 <a href="{{ route('job.show', ['jobPost' => $jobPost]) }}" class="hot-jobs-img">
-                                    <img src="{{ $jobPost->company->user->profile_photo_url }}" alt="Image">
+                                    <img src="{{ $jobPost->company->logo() }}" alt="{{ $jobPost->company->title }}">
                                 </a>
                             </div>
                             <div class="col-lg-6">
@@ -27,7 +27,7 @@
                                     <h3><a href="{{ route('job.show', ['jobPost' => $jobPost]) }}">{{ $jobPost->title }}</a></h3>
                                     <span class="sub-title">{{ $jobPost->company->title }}</span>
                                     <ul>
-                                        <li><span>{{__('Experience')}}: </span>{{ $jobPost->experience->name }}</li>
+                                        <li><span>{{__('Experience')}}: </span>{{ __($jobPost->experience->name) }}</li>
                                         <li><span>{{__('Location')}}: </span>{{ $jobPost->customLocation() }}</li>
                                     </ul>
                                 </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Helper;
 use App\Models\Company;
 use Illuminate\Http\Request;
 use App\Http\Requests\CompanyRequest;
@@ -17,6 +18,8 @@ class CompanyController extends Controller
     }
 
     public function store(CompanyRequest $request){
+        $logo = Helper::uploadFile('logo', 'companies');
+        $request->merge(['logo' => $logo]);
         Company::create($request->input());
         return back()->with('message', ['status' => 'success', 'message' => __('Company created successfully')]);
     }
