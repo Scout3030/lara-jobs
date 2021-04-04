@@ -9,10 +9,7 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     public function index(){
-        $jobPosts = JobPost::with(['company'])
-            ->paginate(5);
-
         $topCompanies = Company::with(['user'])->take(6)->get();
-        return view('home.index', compact('jobPosts', 'topCompanies'));
+        return view('home.index', compact('topCompanies'));
     }
 }

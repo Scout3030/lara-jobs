@@ -9,8 +9,8 @@
                 <div class="partner-slider owl-carousel owl-theme">
                     @forelse($topCompanies as $topCompany)
                     <div class="partner-item">
-                        <a href="#">
-                            <img src="{{$topCompany->user->profile_photo_url}}" alt="{{$topCompany->title}}">
+                        <a href="javascript:void(0)">
+                            <img src="{{$topCompany->logo()}}" alt="{{$topCompany->title}}">
                         </a>
                     </div>
                     @empty
