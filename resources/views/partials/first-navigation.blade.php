@@ -20,11 +20,11 @@
                         </button>
                         <div class="dropdown-menu">
                             <a href="{{route('set_language', ['lang' => 'en'])}}" class="dropdown-item">
-                                <img src="assets\images\language\english.png" alt="Flag">
+                                {{-- <img src="assets\images\language\english.png" alt="Flag"> --}}
                                 <span>{{__('English')}}</span>
                             </a>
                             <a href="{{route('set_language', ['lang' => 'es'])}}" class="dropdown-item">
-                                <img src="assets\images\language\arab.png" alt="Flag">
+                                {{-- <img src="assets\images\language\arab.png" alt="Flag"> --}}
                                 <span>{{__('Spanish')}}</span>
                             </a>
                         </div>
