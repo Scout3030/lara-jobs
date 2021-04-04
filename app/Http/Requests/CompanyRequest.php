@@ -25,8 +25,8 @@ class CompanyRequest extends FormRequest
     {
         return [
             'title' => 'required|min:5',
-            'biography' => "required|min:10",
-            'website_url' => "required|url"
+            'biography' => "nullable|min:10",
+            'website_url' => "nullable|url"
         ];
     }
 }

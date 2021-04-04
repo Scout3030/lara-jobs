@@ -25,7 +25,9 @@ class TechnologySeeder extends Seeder
             9 => "API rest",
             10 => "Ecommerce",
             11 => "Ubuntu",
-            12 => "AWS"
+            12 => "AWS",
+            13 => "PostgreSQL",
+            14 => "Angular",
         ];
         foreach($technologies as $id => $technology) {
             \App\Models\Technology::factory()->create([
