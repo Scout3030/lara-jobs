@@ -21,7 +21,7 @@
                             @endforeach
                         @endif
                         @if(session()->has('message')) {{ session('message') }} @endif
-                        <p>{{__('Join The Newsletter 10,000 Users Already!')}}</p>
+                        <p>{{__('Join now!')}}</p>
                     </form>
                 </div>
             </div>

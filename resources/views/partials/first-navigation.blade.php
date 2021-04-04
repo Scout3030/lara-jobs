@@ -2,8 +2,8 @@
     <div class="col-lg-6 col-md-6">
         <ul class="header-left-content">
             <li>
-                <span>{{__('Hot Line')}}</span>
-                <a href="tel:+51969449655">+51 969-449655</a>
+                <span>{{__('Contact us!')}}</span>
+                <a href="mailto:{{\App\Models\GeneralData::get()->first()->email}}">{{\App\Models\GeneralData::get()->first()->email}}</a>
             </li>
         </ul>
     </div>

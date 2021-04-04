@@ -47,7 +47,7 @@
                     <div class="job-details-content">
                         <h3>{{__('Job Description')}}</h3>
                         <p>{{ $jobPost->description }}</p>
-                        <h4>{{__('Competencies')}}:</h4>
+                        <h4>{{__('Competences')}}:</h4>
                         <ul>
                             @foreach($jobPost->technologies as $technology)
                             <li>{{ $technology->name }}</li>

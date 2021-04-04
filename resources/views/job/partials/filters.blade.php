@@ -47,28 +47,28 @@
                         </li>
                         <li>
                             <label class="single-check">
-                                {{__('Last 24 hours')}}
+                                {{__('Last :hours hours', ['hours' => 24])}}
                                 <input type="radio" name="date" data-date="1">
                                 <span class="checkmark"></span>
                             </label>
                         </li>
                         <li>
                             <label class="single-check">
-                                {{__('Last 7 days')}}
+                                {{__('Last :days days', ['days' => 7])}}
                                 <input type="radio" name="date" data-date="7">
                                 <span class="checkmark"></span>
                             </label>
                         </li>
                         <li>
                             <label class="single-check">
-                                {{__('Last 14 days')}}
+                                {{__('Last :days days', ['days' => 14])}}
                                 <input type="radio" name="date" data-date="14">
                                 <span class="checkmark"></span>
                             </label>
                         </li>
                         <li>
                             <label class="single-check">
-                                {{__('Last 30 days')}}
+                                {{__('Last :days days', ['days' => 30])}}
                                 <input type="radio" name="date" data-date="30">
                                 <span class="checkmark"></span>
                             </label>

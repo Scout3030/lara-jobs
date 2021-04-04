@@ -27,11 +27,11 @@
                 </li>
                 <li>
                     {{__('Job Type')}}
-                    <span>: {{ $jobPost->jobType->name }}</span>
+                    <span>: {{ __($jobPost->jobType->name) }}</span>
                 </li>
                 <li>
                     {{__('Experience')}}
-                    <span>: {{ $jobPost->experience->name }}</span>
+                    <span>: {{ __($jobPost->experience->name) }}</span>
                 </li>
                 <li>
                     {{__('Job Location')}}

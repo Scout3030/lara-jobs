@@ -3,13 +3,13 @@
         <div class="d-table-cell">
             <div class="container">
                 <div class="banner-content">
-                    <h1>{{__('Find The Best Job For Future')}}</h1>
-                    <p>{{__('Search Over 10,000 Jobs Today!')}}</p>
+                    <h1>{{__('The place for Laravel Jobs')}}</h1>
+                    <p>{{__('Jobs around Latin America!')}}</p>
                     <form class="search-job" method="GET" action="{{ route('job.list') }}">
                         <div class="row">
                             <div class="col-lg-9 col-sm-6">
                                 <div class="form-group">
-                                    <input type="text" name="q" class="form-control" id="job-title-2" placeholder="{{__('City, State, or zip')}}">
+                                    <input type="text" name="q" class="form-control" id="job-title-2" placeholder="{{__('Keyword')}}">
                                 </div>
                             </div>
                             <div class="col-lg-3 col-sm-6 offset-sm-3 offset-lg-0">

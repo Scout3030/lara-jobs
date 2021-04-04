@@ -41,15 +41,14 @@
                     <h3><a href="{{ route('job.show', ['jobPost' => $jobPost]) }}">{{ $jobPost->title }}</a></h3>
                     <span class="sub-title">{{ $jobPost->company->title }}</span>
                     <ul>
-                        <li><span>{{__('Education')}}:</span> BBA / M.A.</li>
-                        <li><span>{{__('Experience')}}: </span>At Least 2 Year(s)</li>
-                        <li><span>{{__('Location')}}: </span>Alaska</li>
+                        <li><span>{{__('Experience')}}: </span>{{ __($jobPost->experience->name) }}</li>
+                        <li><span>{{__('Location')}}: </span>{{ $jobPost->customLocation() }}</li>
                     </ul>
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="hot-jobs-btn">
-                    <a href="{{ route('job.show', ['jobPost' => $jobPost]) }}" class="default-btn">Browse Job</a>
+                    <a href="{{ route('job.show', ['jobPost' => $jobPost]) }}" class="default-btn">{{ __('Browse Job') }}</a>
                     <p><span>{{__('Deadline')}}: </span>{{ $jobPost->deadline->format('d-m-Y') }}</p>
                 </div>
             </div>
