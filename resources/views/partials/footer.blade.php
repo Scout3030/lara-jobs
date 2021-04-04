@@ -11,7 +11,7 @@
                     <ul class="social-icon">
                         @foreach(\App\Models\GeneralData::get()->first()->social_network as $socialNetwork)
                         <li>
-                            <a href="{{$socialNetwork['link']}}">
+                            <a href="{{$socialNetwork['link']}}" target="_BLANK">
                                 <i class="bx bxl-{{$socialNetwork['icon']}}"></i>
                             </a>
                         </li>
