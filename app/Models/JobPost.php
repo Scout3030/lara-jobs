@@ -85,7 +85,8 @@ class JobPost extends Model
         'location',
         'salary',
         'how_to_apply',
-        'vacancies'
+        'vacancies',
+        'company_id'
     ];
 
     protected $appends = [
