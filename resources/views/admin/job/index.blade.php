@@ -10,12 +10,12 @@
 
 <div class="col-lg-12">
     <div class="candidates-resume-content">
-        <table id="company_tables" class="display">
+        <table id="job_tables" class="display">
             <thead>
                 <tr>
                     <th>ID</th>
                     <th>Title</th>
-                    <th>Website</th>
+                    <th>Company</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -30,19 +30,19 @@
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
 <script>
     $(document).ready( function () {
-        $('#company_tables').DataTable({
+        $('#job_tables').DataTable({
             pageLength: 5,
             lengthMenu: [ 5, 10, 25, 50, 75, 100 ],
             processing: true,
             serverSide: true,
-            ajax: '{{ route('company.datatable') }}',
+            ajax: '{{ route('admin.job.datatable') }}',
             language: {
                 url: "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
             },
             columns: [
                 {data: 'id', visible: true},
                 {data: 'title'},
-                {data: 'website_url'},
+                {data: 'company.title'},
                 {data: 'actions'}
             ]
         });

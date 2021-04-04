@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @push('styles')
-    <link ref="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css"/>
 
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ asset('assets/jQuery-RichText/src/richtext.min.css') }}">
@@ -21,7 +21,7 @@
 
                 <h3>{{__('Job Information')}}</h3>
 
-                <livewire:post-form :company="$company"/>
+                <livewire:job-post-create :company="$company"/>
 
             </div>
         </div>
@@ -32,6 +32,7 @@
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="{{  asset('assets/jQuery-RichText/src/jquery.richtext.min.js') }}"></script>
     <script>
+        // wysiwyg found on https://www.jqueryscript.net/text/wysiwyg-editor-bootstrap.html
         $(document).ready(function() {
             $('.country_select2').select2();
             $('.department_select2').select2();

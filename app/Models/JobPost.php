@@ -90,8 +90,7 @@ class JobPost extends Model
     ];
 
     protected $appends = [
-        'custom_tag',
-        'custom_location'
+        'custom_tag'
     ];
 
     protected $casts = [

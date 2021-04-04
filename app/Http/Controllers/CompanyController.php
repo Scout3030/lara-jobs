@@ -10,11 +10,11 @@ use App\Http\Requests\CompanyRequest;
 class CompanyController extends Controller
 {
     public function index(){
-        return view('company.index');
+        return view('admin.company.index');
     }
 
     public function create(){
-        return view('company.create');
+        return view('admin.company.create');
     }
 
     public function store(CompanyRequest $request){
@@ -26,7 +26,7 @@ class CompanyController extends Controller
 
     public function datatable(){
         return \Datatables()->of(Company::all())
-        ->addColumn('actions', 'company.datatable.actions')
+        ->addColumn('actions', 'admin.company.datatable.actions')
         ->rawColumns(['actions'])
         ->toJson();
     }

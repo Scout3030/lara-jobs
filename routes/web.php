@@ -43,27 +43,35 @@ Route::group(['prefix' => 'job'], function () {
         ->name('job.show');
 });
 
-Route::group(["middleware" => ['auth', sprintf("role:%s", \App\Models\Role::ADMIN)]], function() {
+Route::group(['prefix' => 'admin', "middleware" => ['auth', sprintf("role:%s", \App\Models\Role::ADMIN)]], function() {
 
     Route::group(['prefix' => 'company'], function () {
+
         Route::get('/', [CompanyController::class, 'index'])
-            ->name('company.index');
-
+            ->name('admin.company.index');
         Route::get('/create', [CompanyController::class, 'create'])
-            ->name('company.create');
-
+            ->name('admin.company.create');
         Route::post('/store', [CompanyController::class, 'store'])
-            ->name('company.store');
+            ->name('admin.company.store');
     
         Route::get('/datatable', [CompanyController::class, 'datatable'])
-            ->name('company.datatable');
+            ->name('admin.company.datatable');
+    });
 
-        Route::group(['prefix' => 'job'], function () {
-            Route::get('/create/{company:id}', [JobPostController::class, 'create'])
-                ->name('job.create');
-            Route::post('/store', [JobPostController::class, 'store'])
-                ->name('job.store');
-        });
+    Route::group(['prefix' => 'job'], function () {
+        Route::get('/', [JobPostController::class, 'index'])
+            ->name('admin.job.index');
+        Route::get('/create/{company:id}', [JobPostController::class, 'create'])
+            ->name('admin.job.create');
+        Route::get('/edit/{jobPost}', [JobPostController::class, 'edit'])
+            ->name('admin.job.edit');
+        Route::put('/update/{jobPost:slug}', [JobPostController::class, 'update'])
+            ->name('admin.job.update');
+        Route::post('/store', [JobPostController::class, 'store'])
+            ->name('admin.job.store');
+
+        Route::get('/datatable', [JobPostController::class, 'datatable'])
+            ->name('admin.job.datatable');
     });
 });
 

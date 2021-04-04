@@ -50,8 +50,13 @@
             @auth
             <ul class="log-in">
                 <li>
-                    <a href="{{ route('company.index') }}">
+                    <a href="{{ route('admin.company.index') }}">
                         {{__('Companies')}}
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.job.index') }}">
+                        {{__('Jobs')}}
                     </a>
                 </li>
                 <li>
