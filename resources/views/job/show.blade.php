@@ -21,7 +21,7 @@
                         <div class="row align-items-center">
                             <div class="col-lg-2">
                                 <div class="hot-jobs-img">
-                                    <img src="{{$jobPost->company->user->profile_photo_url}}" alt="{{$jobPost->company->title}}">
+                                    <img src="{{$jobPost->company->logo()}}" alt="{{$jobPost->company->title}}">
                                 </div>
                             </div>
                             <div class="col-lg-6">
@@ -46,7 +46,7 @@
                     </div>
                     <div class="job-details-content">
                         <h3>{{__('Job Description')}}</h3>
-                        <p>{{ $jobPost->description }}</p>
+                        <p>{!! $jobPost->description !!}</p>
                         <h4>{{__('Competences')}}:</h4>
                         <ul>
                             @foreach($jobPost->technologies as $technology)
