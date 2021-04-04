@@ -11,7 +11,7 @@
             <div class="col-lg-6 col-md-6">
                 <div class="form-group">
                     <label for="website_url">{{__('Website')}}</label>
-                    <input id="website_url" class="form-control" type="text" name="website_url" autocomplete="off" required value="{{ old('website_url') }}">
+                    <input id="website_url" class="form-control" type="text" name="website_url" autocomplete="off" value="{{ old('website_url') }}">
                 </div>
             </div>
 
@@ -25,7 +25,7 @@
             <div class="col-lg-12">
                 <div class="form-group">
                     <label for="biography">{{__('Biography')}}*</label>
-                    <textarea id="biography" name="biography" class="form-control" rows="5" required>{{ old('biography') }}</textarea>
+                    <textarea id="biography" name="biography" class="form-control" rows="5">{{ old('biography') }}</textarea>
                 </div>
             </div>
         </div>

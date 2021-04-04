@@ -24,7 +24,7 @@ class CreateJobPostsTable extends Migration
             $table->unsignedBigInteger('experience_id')->default(3);
             $table->foreign('experience_id')->references('id')->on('experiences');
             $table->string('title');
-            $table->string('description');
+            $table->string('description', 9000);
             $table->integer('vacancies')->default(1);
             $table->json('location');
             $table->string('salary')->nullable();

@@ -45,7 +45,7 @@ class Company extends Model
         'logo'
     ];
 
-    public function logo () {
+    public function logoImage() {
     	return "/images/companies/" . $this->logo;
     }
 
