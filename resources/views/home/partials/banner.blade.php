@@ -34,7 +34,7 @@
                             </div>
                             <div class="col-lg-4 col-sm-6 col-md-4 offset-sm-3 offset-md-0 offset-lg-0">
                                 <div class="job-count">
-                                    <h3><span>{{__('New Jobs')}}: </span>{{App\Models\JobPost::where('created_at', '>', Carbon\Carbon::now()->subMonth())->get()->count()}}</h3>
+                                    <h3><span>{{__('New Jobs')}}: </span>{{App\Models\JobPost::where('created_at', '>', Carbon\Carbon::now()->subDays(2))->get()->count()}}</h3>
                                 </div>
                             </div>
                         </div>
