@@ -80,7 +80,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    {{ $jobPost->how_to_apply }}
+                    {!! $jobPost->how_to_apply !!}
                 </div>
             </div>
         </div>

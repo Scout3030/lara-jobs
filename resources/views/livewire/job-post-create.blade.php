@@ -104,13 +104,7 @@
             <div class="col-lg-12">
                 <div class="form-group">
                     <label for="description">{{__('Job Description')}}*</label>
-                    <textarea id="description" name="description" class="form-control" rows="5" required>{{ old('description') }}</textarea>
-                </div>
-            </div>
-            <div class="col-lg-12">
-                <div class="form-group">
-                    <label for="how_to_apply">{{__('How to apply')}}*</label>
-                    <textarea id="how_to_apply" name="how_to_apply" class="form-control" rows="2" required>{{ old('how_to_apply') }}</textarea>
+                    <textarea id="description" name="description" class="form-control editor" rows="5">{{ old('description') }}</textarea>
                 </div>
             </div>
             <div class="col-lg-12">
@@ -119,12 +113,17 @@
                     <p>
                         @foreach(\App\Models\Technology::get() as $technology)
                             {{__($technology->name)}}
-                            <input id="technologies" type="checkbox" name="technologies[]" value="{{ $technology->id }}" class="mr-3" @if( old('technologies') && Arr::exists(old('technologies'), $technology->id -1 ) ) checked @endif>
+                            <input type="checkbox" name="technologies[]" value="{{ $technology->id }}" class="mr-3" @if( old('technologies') && Arr::exists(old('technologies'), $technology->id -1 ) ) checked @endif>
                         @endforeach
                     </p>
                 </div>
             </div>
-
+            <div class="col-lg-12">
+                <div class="form-group">
+                    <label for="how_to_apply">{{__('How to apply')}}*</label>
+                    <textarea id="how_to_apply" name="how_to_apply" class="form-control editor" rows="2">{{ old('how_to_apply') }}</textarea>
+                </div>
+            </div>
         </div>
         <div class="row">
             <div class="col-lg-12">

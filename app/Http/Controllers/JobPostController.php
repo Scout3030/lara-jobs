@@ -14,12 +14,12 @@ class JobPostController extends Controller
     }
 
     public function create(Company $company){
-        return view('admin.job.create', compact('company'));
+        return view('admin.job.create-edit', compact('company'));
     }
 
     public function edit(JobPost $jobPost){
         $jobPost->load(['company', 'jobType']);
-        return view('admin.job.edit', compact('jobPost'));
+        return view('admin.job.create-edit', compact('jobPost'));
     }
 
     public function show(JobPost $jobPost){
