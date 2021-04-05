@@ -14,9 +14,10 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Title</th>
-                    <th>Company</th>
-                    <th>Actions</th>
+                    <th>{{__('Title')}}</th>
+                    <th>{{__('Company')}}</th>
+                    <th>{{__('Actions')}}</th>
+                    <th>{{__('Date')}}</th>
                 </tr>
             </thead>
             <tbody>
@@ -43,8 +44,10 @@
                 {data: 'id', visible: true},
                 {data: 'title'},
                 {data: 'company.title'},
-                {data: 'actions'}
-            ]
+                {data: 'actions'},
+                {data: 'created_at', visible: false}
+            ],
+            order: [[4, 'desc']]
         });
     } );
 </script>

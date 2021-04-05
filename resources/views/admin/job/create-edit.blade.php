@@ -10,14 +10,16 @@
             menubar: true,
             plugins: 'link image code',
             font_formats: "Andale Mono=andale mono,times; Arial=arial,helvetica,sans-serif; Arial Black=arial black,avant garde; Book Antiqua=book antiqua,palatino; Comic Sans MS=comic sans ms,sans-serif; Courier New=courier new,courier; Georgia=georgia,palatino; Helvetica=helvetica; Impact=impact,chicago; Muli=muli; Symbol=symbol; Tahoma=tahoma,arial,helvetica,sans-serif; Terminal=terminal,monaco; Times New Roman=times new roman,times; Trebuchet MS=trebuchet ms,geneva; Verdana=verdana,geneva; Webdings=webdings; Wingdings=wingdings,zapf dingbats",
-            content_style: "body { font-size: 16px; font-family: muli; }"
+            fontsize_formats: "8pt 10pt 12pt 14pt 18pt 24pt 36pt",
+            content_style: "body { font-size: 12pt; font-family: muli; }"
         });
         tinymce.init({
             selector: '#how_to_apply',
             menubar: true,
             plugins: 'link image code',
             font_formats: "Andale Mono=andale mono,times; Arial=arial,helvetica,sans-serif; Arial Black=arial black,avant garde; Book Antiqua=book antiqua,palatino; Comic Sans MS=comic sans ms,sans-serif; Courier New=courier new,courier; Georgia=georgia,palatino; Helvetica=helvetica; Impact=impact,chicago; Muli=muli; Symbol=symbol; Tahoma=tahoma,arial,helvetica,sans-serif; Terminal=terminal,monaco; Times New Roman=times new roman,times; Trebuchet MS=trebuchet ms,geneva; Verdana=verdana,geneva; Webdings=webdings; Wingdings=wingdings,zapf dingbats",
-            content_style: "body { font-size: 16px; font-family: muli; }"
+            fontsize_formats: "8pt 10pt 12pt 14pt 18pt 24pt 36pt",
+            content_style: "body { font-size: 12pt; font-family: muli; }"
         });
     </script>
 @endpush
@@ -59,15 +61,15 @@
             select2Country.select2();
             select2Department.select2();
             select2Province.select2();
-            @if(old('country_id') || ($jobPost && $jobPost->location['country_id']))
+            @if(old('country_id') || (@$jobPost && $jobPost->location['country_id']))
             select2Country.val({{ old('country_id') ?? $jobPost->location['country_id'] }});
             select2Country.trigger('change');
             @endif
-            @if(old('department_id') || ($jobPost && $jobPost->location['department_id']))
+            @if(old('department_id') || (@$jobPost && $jobPost->location['department_id']))
             select2Department.val({{ old('department_id') ?? $jobPost->location['department_id'] }});
             select2Department.trigger('change');
             @endif
-            @if(old('province_id') || ($jobPost && $jobPost->location['province_id']))
+            @if(old('province_id') || (@$jobPost && $jobPost->location['province_id']))
             select2Department.val({{ old('province_id') ?? $jobPost->location['province_id'] }});
             select2Department.trigger('change');
             @endif

@@ -23,10 +23,25 @@ class CompanyRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'title' => 'required|min:5',
-            'biography' => "nullable|min:10",
-            'website_url' => "nullable|url"
-        ];
+        switch ($this->method()) {
+            case 'GET':
+            case 'DELETE':
+                return [];
+            case 'POST': {
+                return [
+                    'title' => 'required|min:5',
+                    'biography' => "nullable|min:10",
+                    'website_url' => "nullable|url",
+                    'logo' => 'required|image|mimes:jpg,png'
+                ];
+            }
+            case 'PUT': {
+                return [
+                    'title' => 'required|min:5',
+                    'biography' => "nullable|min:10",
+                    'website_url' => "nullable|url"
+                ];
+            }
+        }
     }
 }

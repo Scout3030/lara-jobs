@@ -53,7 +53,12 @@ Route::group(['prefix' => 'admin', "middleware" => ['auth', sprintf("role:%s", \
             ->name('admin.company.create');
         Route::post('/store', [CompanyController::class, 'store'])
             ->name('admin.company.store');
-    
+        Route::get('/edit/{company:slug}', [CompanyController::class, 'edit'])
+            ->name('admin.company.edit');
+        Route::put('/update/{company:slug}', [CompanyController::class, 'update'])
+            ->name('admin.company.update');
+
+
         Route::get('/datatable', [CompanyController::class, 'datatable'])
             ->name('admin.company.datatable');
     });
@@ -61,7 +66,7 @@ Route::group(['prefix' => 'admin', "middleware" => ['auth', sprintf("role:%s", \
     Route::group(['prefix' => 'job'], function () {
         Route::get('/', [JobPostController::class, 'index'])
             ->name('admin.job.index');
-        Route::get('/create/{company:id}', [JobPostController::class, 'create'])
+        Route::get('/create/{company:slug}', [JobPostController::class, 'create'])
             ->name('admin.job.create');
         Route::get('/edit/{jobPost}', [JobPostController::class, 'edit'])
             ->name('admin.job.edit');

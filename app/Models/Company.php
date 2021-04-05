@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 /**
  * App\Models\Company
@@ -67,6 +69,9 @@ class Company extends Model
         static::saving(function(Company $company) {
             if( ! \App::runningInConsole() ) {
                 $company->user_id = 2;
+                if(request()->isMethod('post')){
+                    $company->slug = Str::slug($company->title, "-")."-".strtotime(Carbon::now());
+                }
             }
         });
     }

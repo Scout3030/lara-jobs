@@ -126,7 +126,9 @@ class JobPost extends Model
                     'department_id' => $department ? $department->id : null,
                     'country_id' => $country ? $country->id : request()->country_id
                 ];
-                $jobPost->slug = Str::slug($jobPost->title, "-")."-".strtotime(Carbon::now());
+                if(request()->isMethod('post')) {
+                    $jobPost->slug = Str::slug($jobPost->title, "-") . "-" . strtotime(Carbon::now());
+                }
                 $jobPost->location = $location;
             }
         });
