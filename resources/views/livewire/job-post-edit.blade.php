@@ -54,7 +54,7 @@
                     <label for="experience_id">{{__('Experience')}}*</label>
                     <select id="experience_id" name="experience_id" required>
                         @foreach(\App\Models\Experience::get() as $experience)
-                            <option value="{{$experience->id}}" @if( old('experience_id') == $experience->id ?? $jobPost->experience_id == $experience->id) selected @endif>{{$experience->name}}</option>
+                            <option value="{{$experience->id}}" @if( old('experience_id') == $experience->id || $jobPost->experience_id == $experience->id) selected @endif>{{$experience->name}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -63,9 +63,10 @@
                 <div class="form-group">
                     <label for="tag">{{__('Tag')}}*</label>
                     <select id="tag" name="tag" required>
-                        <option value="1" @if(old('tag') == 1 ?? $jobPost->tag == 1) selected @endif>{{ __('Featured') }}</option>
-                        <option value="2" @if(old('tag') == 2 ?? $jobPost->tag == 2) selected @endif>{{ __('Urgent') }}</option>
-                        <option value="3" @if(old('tag') == 3 ?? $jobPost->tag == 3) selected @endif>{{ __('Immediate') }}</option>
+
+                        <option value="1" @if(old('tag') == 1 || $jobPost->tag == 1) selected @endif>{{ __('Featured') }}</option>
+                        <option value="2" @if(old('tag') == 2 || $jobPost->tag == 2) selected @endif>{{ __('Urgent') }}</option>
+                        <option value="3" @if(old('tag') == 3 || $jobPost->tag == 3) selected @endif>{{ __('Immediate') }}</option>
                     </select>
                 </div>
             </div>
@@ -120,7 +121,7 @@
                     <p>
                         @foreach(\App\Models\Technology::get() as $technology)
                             {{__($technology->name)}}
-                            <input id="technologies" type="checkbox" name="technologies[]" value="{{ $technology->id }}" class="mr-3" @if( old('technologies') && Arr::exists(old('technologies'), $technology->id -1 ) ?? Arr::exists($jobPost->technologies, $technology->id -1 ) ) checked @endif>
+                            <input id="technologies" type="checkbox" name="technologies[]" value="{{ $technology->id }}" class="mr-3" @if( $jobPost->technologies->contains($technology->id)) checked @endif>
                         @endforeach
                     </p>
                 </div>

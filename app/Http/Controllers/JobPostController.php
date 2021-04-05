@@ -65,7 +65,7 @@ class JobPostController extends Controller
         foreach($request->technologies as $technology_id){
             $jobPost->technologies()->attach($technology_id);
         }
-        return back()->with('message', ['status' => 'success', 'message' => __('Job post created successfully')]);
+        return redirect()->route('admin.job.index')->with('message', ['status' => 'success', 'message' => __('Job post created successfully')]);
     }
 
     public function list(){

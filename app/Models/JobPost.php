@@ -107,28 +107,27 @@ class JobPost extends Model
                 $province = null;
                 $department = null;
                 $country = null;
-                if(request()->has('province_id') && request()->province_id != null){
+                if(request()->country_id != null){
+                    $country = Country::findOrFail(request()->country_id);
+                }
+                if(request()->department_id != null){
+                    $department = Department::with('country')
+                        ->findOrFail(request()->department_id);
+                    $country = $department->country;
+                }
+                if(request()->province_id != null){
                     $province = Province::with('department.country')
                         ->findOrFail(request()->province_id);
                     $department = $province->department;
                     $country = $province->department->country;
                 }
-                if(!request()->has('province_id') && request()->has('department_id') && request()->department_id != null){
-                    $department = Department::with('country')
-                        ->findOrFail(request()->department_id);
-                    $country = $department->country;
-                }
-                if(!request()->has('province_id') && !request()->has('department_id') && request()->has('country_id') && request()->country_id != null){
-                    $country = Country::findOrFail(request()->country_id);
-                }
                 $location = [
                     'province_id' => $province ? $province->id : null,
                     'department_id' => $department ? $department->id : null,
-                    'country_id' => $country ? $department->country->id : request()->country_id
+                    'country_id' => $country ? $country->id : request()->country_id
                 ];
                 $jobPost->slug = Str::slug($jobPost->title, "-")."-".strtotime(Carbon::now());
                 $jobPost->location = $location;
-//                $jobPost->company_id = auth()->user()->company->id;
             }
         });
     }

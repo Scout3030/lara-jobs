@@ -55,15 +55,6 @@
                 select2Department.trigger('change');
             @endif
 
-            //     let params = 1;
-            // select2Department.select2({
-            //     ajax: {
-            //         url: function (params) {
-            //             return '/some/url/' + params.term;
-            //         }
-            //     }
-            // });
-
             $('textarea').richText({
                 // text formatting
                 bold: true,

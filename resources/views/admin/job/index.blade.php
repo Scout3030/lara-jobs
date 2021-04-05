@@ -6,7 +6,7 @@
 
 @section('content')
 
-@include('partials.breadcrumb', ['title' => __('Companies list')])
+@include('partials.breadcrumb', ['title' => __('Job list')])
 
 <div class="col-lg-12">
     <div class="candidates-resume-content">
