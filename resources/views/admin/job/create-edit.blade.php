@@ -8,12 +8,14 @@
         tinymce.init({
             selector: '#description',
             menubar: true,
-            plugins: 'link image code',
+            plugins: 'fullpage link image code',
+            fullpage_default_font_family: "muli;"
         });
         tinymce.init({
             selector: '#how_to_apply',
             menubar: true,
-            plugins: 'link image code',
+            plugins: 'fullpage link image code',
+            fullpage_default_font_family: "muli;"
         });
     </script>
 @endpush
@@ -47,4 +49,26 @@
 
 @push('scripts')
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            let select2Country = $('.country_select2')
+            let select2Department = $('.department_select2')
+            let select2Province = $('.province_select2')
+            select2Country.select2();
+            select2Department.select2();
+            select2Province.select2();
+            @if(old('country_id') || ($jobPost && $jobPost->location['country_id']))
+            select2Country.val({{ old('country_id') ?? $jobPost->location['country_id'] }});
+            select2Country.trigger('change');
+            @endif
+            @if(old('department_id') || ($jobPost && $jobPost->location['department_id']))
+            select2Department.val({{ old('department_id') ?? $jobPost->location['department_id'] }});
+            select2Department.trigger('change');
+            @endif
+            @if(old('province_id') || ($jobPost && $jobPost->location['province_id']))
+            select2Department.val({{ old('province_id') ?? $jobPost->location['province_id'] }});
+            select2Department.trigger('change');
+            @endif
+        });
+    </script>
 @endpush
