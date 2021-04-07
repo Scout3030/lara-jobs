@@ -6,7 +6,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="{{ route('job.show', ['jobPost' => $jobPost]) }}">
 <meta property="og:site_name" content="{{ env('APP_NAME') }}">
-<meta property="og:image" content="{{ route('home.index') }}{{ $jobPost->company->logo() }}">
+<meta property="og:image" content="{{ asset('assets/images/banner/banner-bg-3.jpg') }}">
 @endpush
 
 @push('styles')
