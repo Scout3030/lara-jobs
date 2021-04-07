@@ -1,5 +1,13 @@
 @extends('layouts.app')
 
+@push('tags')
+<meta property="og:title" content="{{ $jobPost->title }}">
+<meta property="og:description" content="{{ strip_tags($jobPost->description) }}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ route('job.show', ['jobPost' => $jobPost]) }}">
+<meta property="og:site_name" content="{{ env('APP_NAME') }}">
+@endpush
+
 @push('styles')
 
 @endpush

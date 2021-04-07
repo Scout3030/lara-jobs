@@ -33,6 +33,7 @@
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
         @stack('styles')
+        @stack('tags')
     </head>
     <body>
         @stack('facebook-sdk')
